@@ -24,7 +24,7 @@ class ParticleBox:
 			#print (self.state)
 			self.termino = True
 			rows = self.state.shape[0]
-			for i in range(0, (rows - 264)):
+			for i in range(0, (rows - 265)):
 				#print (self.state[i,0])
 				self.state[i, 1] = dt * - 100 
 			for g in range(0, (rows - 265)):
