@@ -3,6 +3,7 @@
 import numpy as np
 import Practica3_Ej4 as Ej4
 import matplotlib.pyplot as plt
+import time
 import matplotlib.animation as animation
 
 class ParticleBox:
@@ -17,18 +18,19 @@ class ParticleBox:
 		self.bounds = bounds
 		self.termino = False
 		self.vector = Ej4.regla_tita(5, 2, 50, 1/30)
-		self.rows = self.state.shape[0]
-		for i in range(0, self.rows):
-			self.state[i, 1] = -1 #Borro el tablero
+		#self.rows = self.state.shape[0]
+		#for i in range(0, self.rows):
+			#self.state[i, 1] = -1 #Borro el tablero
 	
 	def step(self, dt):
 		"""step once by dt seconds"""
 		self.time_elapsed += dt
-		if (not self.termino and self.time_elapsed > 2):
-			self.termino = True
-			for i in range(0, 22):
-				#for g in (self.vector):
-				self.state[i, 1] = 2 
+		# if (not self.termino and self.time_elapsed > 2):
+			# self.termino = True
+			# for i in range(0, self.rows):
+				# #for g in (self.vector):
+				# self.state[i, 1] = 2
+				# #time.sleep(0.1) 
 
 
 
@@ -50,13 +52,10 @@ def buildBox(delta, bounds):
 	return init_state
 	
 delta = 2
-bounds = [0, 50, 0, 50]
+bounds = [0, 100, 0, 100]
 
 box = ParticleBox(buildBox(delta, bounds), bounds, size=2.5)
 
-bounds2 = [50, 100, 0, 50]
-
-box2 = ParticleBox(buildBox(delta, bounds2), bounds2, size=2.5)
 
 dt = 1. / 30 # 30fps
 
@@ -68,23 +67,18 @@ particles2, = ax.plot([], [], 'ro', ms=5)
 
 # initialization function: plot the background of each frame
 def init():
-	global box, box2
+	global box
 	particles.set_data([], [])
-	particles2.set_data([], [])
-	return particles,particles2,
+	return particles,
 
 # animation function.  This is called sequentially
 def animate(i):
-	global box, box2, dt, ax, fig
+	global box,  dt, ax, fig
 	box.step(dt)
-	box2.step(dt)
 	particles.set_data(box.state[:, 0], box.state[:, 1])
 	particles.set_markersize(5)
-	
-	particles2.set_data(box2.state[:, 0], box2.state[:, 1])
-	particles2.set_markersize(5)
 
-	return particles,particles2,
+	return particles,
 	
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
