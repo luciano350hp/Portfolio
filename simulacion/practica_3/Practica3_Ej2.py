@@ -1,0 +1,148 @@
+#!/usr/bin/env python
+import numpy as np
+import Practica3_Ej1 as Ej1
+import matplotlib.pyplot as plt
+
+def solucion_exacta(I, a, T, dt, θ):
+    """ Encuentra los valores EXACTOS de la funcion. """
+    puntos = Ej1.discretizar(T, dt)
+    valores_u = np.array([ ])
+    for n in range(0, len(puntos)):
+        valores_u = (np.append(valores_u, (I * (np.exp(-a * puntos[n])))))
+    print("Los valores EXACTOS en los puntos t son: \n ", valores_u)
+    return(valores_u)
+
+#Ejercicio 2 (3)
+def grafico():
+    """ Se mostrara el grafico segun el valor que ingrese el usuario ( 1 - 12) """
+    grafic =int(input ("Ingrese un numero ( 1 - 12) y se mostrara el grafico correspondiente: ")) 
+    if (grafic == 1):
+        plt.plot((Ej1.discretizar(5, 0.1)),(Ej1.regla_tita(1, 2, 5, 0.1, 0)) , 'ro', (Ej1.discretizar(5, 0.1)), solucion_exacta(1, 2, 5, 0.1, 0), 'go')
+        plt.axis([-0.25, 6, -0.25, 1.5])
+        plt.xlabel('T = 5, dt = 0.1')
+        plt.ylabel('θ = 0,  dt = 0.1')
+        plt.title('Grafico 1')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 2):
+        plt.plot((Ej1.discretizar(5, 0.5)),(Ej1.regla_tita(1, 2, 5, 0.5, 0)) , 'ro', (Ej1.discretizar(5, 0.5)), solucion_exacta(1, 2, 5, 0.5, 0), 'go', (Ej1.discretizar(5, 0.5)),(Ej1.regla_tita(1, 2, 5, 0.5, 0)) , 'b')
+        plt.axis([-0.25, 6, -0.25, 1.5])
+        plt.xlabel('T = 5, dt = 0.5')
+        plt.ylabel('θ = 0,  dt = 0.5')
+        plt.title('Grafico 2')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 3):
+        plt.plot((Ej1.discretizar(5, 0.7)),(Ej1.regla_tita(1, 2, 5, 0.7, 0)) , 'ro', (Ej1.discretizar(5, 0.7)), solucion_exacta(1, 2, 5, 0.7, 0), 'go', (Ej1.discretizar(5, 0.7)),(Ej1.regla_tita(1, 2, 5, 0.7, 0)) , 'b')
+        plt.axis([-0.25, 4.95, -0.6, 1.25])
+        plt.xlabel('T = 5, dt = 0.7')
+        plt.ylabel('θ = 0,  dt = 0.7')
+        plt.title('Grafico 3')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 4):
+        plt.plot((Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 0)) , 'ro', (Ej1.discretizar(5, 1.25)), solucion_exacta(1, 2, 5, 1.25, 0), 'go', (Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 0)) , 'b')
+        plt.axis([-0.25, 6, -4.5, 6])
+        plt.xlabel('T = 5, dt = 1.25')
+        plt.ylabel('θ = 0,  dt = 1.25')
+        plt.title('Grafico 4')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper left')
+        plt.show()
+    if (grafic == 5):
+        plt.plot((Ej1.discretizar(5, 0.1)),(Ej1.regla_tita(1, 2, 5, 0.1, 0.5)) , 'ro', (Ej1.discretizar(5, 0.1)), solucion_exacta(1, 2, 5, 0.1, 0.5), 'go')
+        plt.axis([-0.25, 6, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.1')
+        plt.ylabel('θ = 0.5,  dt = 0.1')
+        plt.title('Grafico 5')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 6):
+        plt.plot((Ej1.discretizar(5, 0.5)),(Ej1.regla_tita(1, 2, 5, 0.5, 0.5)) , 'ro', (Ej1.discretizar(5, 0.5)), solucion_exacta(1, 2, 5, 0.5, 0.5), 'go')
+        plt.axis([-0.25, 6, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.5')
+        plt.ylabel('θ = 0.5,  dt = 0.5')
+        plt.title('Grafico 6')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 7):
+        plt.plot((Ej1.discretizar(5, 0.7)),(Ej1.regla_tita(1, 2, 5, 0.7, 0.5)) , 'ro', (Ej1.discretizar(5, 0.7)), solucion_exacta(1, 2, 5, 0.7, 0.5), 'go')
+        plt.axis([-0.25, 5.2, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.7')
+        plt.ylabel('θ = 0.5,  dt = 0.7')
+        plt.title('Grafico 7')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 8):
+        plt.plot((Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 0.5)) , 'ro', (Ej1.discretizar(5, 1.25)), solucion_exacta(1, 2, 5, 1.25, 0.5), 'go', (Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 0.5)) , 'b')
+        plt.axis([-0.25, 6, -0.3, 1.25])
+        plt.xlabel('T = 5, dt = 1.25')
+        plt.ylabel('θ = 0.5,  dt = 1.25')
+        plt.title('Grafico 8')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 9):
+        plt.plot((Ej1.discretizar(5, 0.1)),(Ej1.regla_tita(1, 2, 5, 0.1, 1)) , 'ro', (Ej1.discretizar(5, 0.1)), solucion_exacta(1, 2, 5, 0.1, 1), 'go')
+        plt.axis([-0.25, 6, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.1')
+        plt.ylabel('θ = 1,  dt = 0.1')
+        plt.title('Grafico 9')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 10):
+        plt.plot((Ej1.discretizar(5, 0.5)),(Ej1.regla_tita(1, 2, 5, 0.5, 1)) , 'ro', (Ej1.discretizar(5, 0.5)), solucion_exacta(1, 2, 5, 0.5, 1), 'go', (Ej1.discretizar(5, 0.5)),(Ej1.regla_tita(1, 2, 5, 0.5, 1)) , 'b')
+        plt.axis([-0.25, 6, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.5')
+        plt.ylabel('θ = 1,  dt = 0.5')
+        plt.title('Grafico 10')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 11):
+        plt.plot((Ej1.discretizar(5, 0.7)),(Ej1.regla_tita(1, 2, 5, 0.7, 1)) , 'ro', (Ej1.discretizar(5, 0.7)), solucion_exacta(1, 2, 5, 0.7, 1), 'go', (Ej1.discretizar(5, 0.7)),(Ej1.regla_tita(1, 2, 5, 0.7, 1)) , 'b')
+        plt.axis([-0.25, 4.95, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 0.7')
+        plt.ylabel('θ = 1,  dt = 0.7')
+        plt.title('Grafico 11')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+    if (grafic == 12):
+        plt.plot((Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 1)) , 'ro', (Ej1.discretizar(5, 1.25)), solucion_exacta(1, 2, 5, 1.25, 1), 'go', (Ej1.discretizar(5, 1.25)),(Ej1.regla_tita(1, 2, 5, 1.25, 1)) , 'b')
+        plt.axis([-0.25, 6, -0.25, 1.25])
+        plt.xlabel('T = 5, dt = 1.25')
+        plt.ylabel('θ = 1,  dt = 1.25')
+        plt.title('Grafico 12')
+        plt.legend(('Aproximado', 'Exacto'), loc='upper right')
+        plt.show()
+
+
+def main():
+    #Ejercicio 2 (1)
+    solucion_exacta(1, 1, 5, 0.001, 1)
+   
+    #Ejercicio 2 (2)
+    print("La solucion aproximada θ = 0, dt = 0.1 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.1, 0)
+    print("La solucion aproximada θ = 0, dt = 0.5 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.5, 0)
+    print("La solucion aproximada θ = 0, dt = 0.7 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.7, 0)
+    print("La solucion aproximada θ = 0, dt = 1.25 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 1.25, 0)
+    print("La solucion aproximada θ = 0.5, dt = 0.1 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.1, 0.5)
+    print("La solucion aproximada θ = 0.5, dt = 0.5 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.5, 0.5)
+    print("La solucion aproximada θ = 0.5, dt = 0.7 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.7, 0.5)
+    print("La solucion aproximada θ = 0.5, dt = 1.25 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 1.25, 0.5)
+    print("La solucion aproximada θ = 1, dt = 0.1 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.1, 1)
+    print("La solucion aproximada θ = 1, dt = 0.5 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.5, 1)
+    print("La solucion aproximada θ = 1, dt = 0.7 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 0.7, 1)
+    print("La solucion aproximada θ = 1, dt = 1.25 es: \n ")
+    Ej1.regla_tita(1, 2, 5, 1.25, 1)
+    grafico()
+main()
+
