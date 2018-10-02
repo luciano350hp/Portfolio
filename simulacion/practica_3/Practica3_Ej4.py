@@ -10,8 +10,8 @@ def discretizar(T, dt):
     return(t)
 
 def regla_tita(I, a, T, dt):
-    """ Encuentra los valores aproximados de la funcion y la derivada.
-        Forward Euler only. """ 
+    """ Encuentra los valores aproximados de la funcion.
+        metodo Forward Euler. """ 
     t = discretizar(T, dt)   
     valores_u = np.array([I])
     for n in range(1, len(t)):
@@ -22,10 +22,10 @@ def regla_tita(I, a, T, dt):
     return(valores_u)
 
 def grafico():
-    plt.plot((discretizar(50, 0.1)),(regla_tita(5, 2, 50, 0.1)) , 'r')
+    plt.plot((discretizar(50, 1/30)),(regla_tita(5, 2, 50, 1/30)) , 'r')
     plt.axis([-0.25, 15, -0.25, 3000])
-    plt.xlabel('T = 50, dt = 0.1')
-    plt.ylabel('θ = 0,  dt = 0.1')
+    plt.xlabel('T = 50, dt = 1/30')
+    plt.ylabel('θ = 0,  dt = 1/30')
     plt.title('Grafico crecimiento')
     plt.legend(('Aprox'), loc='upper left')
     plt.show()

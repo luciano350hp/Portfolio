@@ -16,20 +16,22 @@ class ParticleBox:
 		self.time_elapsed = 0
 		self.bounds = bounds
 		self.termino = False
-
+		self.vector = Ej4.regla_tita(5, 2, 50, 1/30)
+		self.rows = self.state.shape[0]
+		for i in range(0, self.rows):
+			self.state[i, 1] = -1 #Borro el tablero
+	
 	def step(self, dt):
 		"""step once by dt seconds"""
 		self.time_elapsed += dt
-		if (not self.termino and self.time_elapsed > 3):
-			#print (self.state)
+		if (not self.termino and self.time_elapsed > 2):
 			self.termino = True
-			rows = self.state.shape[0]
-			for i in range(0, (rows - 265)):
-				#print (self.state[i,0])
-				self.state[i, 1] = dt * - 100 
-			for g in range(0, (rows - 265)):
-				self.state[i, 1] = self.time_elapsed
-				#print (self.state[i,0])
+			for i in range(0, 22):
+				#for g in (self.vector):
+				self.state[i, 1] = 2 
+
+
+
 
 def buildBox(delta, bounds):
 	#------------------------------------------------------------
