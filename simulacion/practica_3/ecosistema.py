@@ -27,7 +27,7 @@ class ParticleBox:
 			for i in range(0, (rows - 264)):
 				#print (self.state[i,0])
 				self.state[i, 1] = dt * - 100 
-			for g in range(0, (rows - 264)):
+			for g in range(0, (rows - 265)):
 				self.state[i, 1] = self.time_elapsed
 				#print (self.state[i,0])
 
