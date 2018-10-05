@@ -17,24 +17,20 @@ class ParticleBox:
 		self.time_elapsed = 0
 		self.bounds = bounds
 		self.termino = False
-		self.vector = Ej4.regla_tita(5, 2, 50, 1/30)
-		#self.rows = self.state.shape[0]
-		#for i in range(0, self.rows):
-			#self.state[i, 1] = -1 #Borro el tablero
-	
+		self.pelotas = Ej4.regla_tita(1, 30, 1)
+		self.totalp = self.state.shape[0]
+		for i in range(0, self.totalp):
+			self.state[i, 1] = -1 #Borro el tablero inicial
+		
 	def step(self, dt):
 		"""step once by dt seconds"""
 		self.time_elapsed += dt
-		# if (not self.termino and self.time_elapsed > 2):
-			# self.termino = True
-			# for i in range(0, self.rows):
-				# #for g in (self.vector):
-				# self.state[i, 1] = 2
-				# #time.sleep(0.1) 
-
-
-
-
+		for a in self.pelotas:
+			a= int(a)
+			for j in range (0, a):
+				self.state[j, 0] = self.init_state[j, 0]
+				self.state[j, 1] = self.init_state[j, 1]
+				
 def buildBox(delta, bounds):
 	#------------------------------------------------------------
 	# set up initial state
@@ -53,36 +49,42 @@ def buildBox(delta, bounds):
 	
 delta = 2
 bounds = [0, 100, 0, 100]
-
 box = ParticleBox(buildBox(delta, bounds), bounds, size=2.5)
-
-
-dt = 1. / 30 # 30fps
+dt = 1. /30 # 30fps
 
 # First set up the figure, the axis, and the plot element we want to animate
 fig = plt.figure()
-ax = plt.axes(xlim=(0, 100), ylim=(0, 50))
+ax = plt.axes(xlim=(0, 110), ylim=(0, 110))
 particles, = ax.plot([], [], 'bo', ms=5)
 particles2, = ax.plot([], [], 'ro', ms=5)
-
+time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes)
 # initialization function: plot the background of each frame
 def init():
 	global box
 	particles.set_data([], [])
+	time_text.set_text('')
 	return particles,
+
+pelotas = Ej4.regla_tita(1, 30, 1)
+
+
+t = [40, 8]
+#create index list for frames, i.e. how many cycles each frame will be displayed
+frame_t = []
+for k, item in enumerate(t):
+    frame_t.extend([k] * item)
 
 # animation function.  This is called sequentially
 def animate(i):
 	global box,  dt, ax, fig
 	box.step(dt)
-	particles.set_data(box.state[:, 0], box.state[:, 1])
+	plt.scatter(box.state[i, 0], box.state[i, 1], c = 'b')
+	time_text.set_text('time = %.1f' % box.time_elapsed)
 	particles.set_markersize(5)
-
 	return particles,
-	
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
 anim = animation.FuncAnimation(fig, animate, init_func=init,
-                               frames=200, interval=20, blit=True)
+                               frames= int(pelotas[0]), interval=100, repeat=True)
 
 plt.show()
