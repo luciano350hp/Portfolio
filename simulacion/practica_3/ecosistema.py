@@ -3,7 +3,6 @@
 import numpy as np
 import Practica3_Ej4 as Ej4
 import matplotlib.pyplot as plt
-import time
 import matplotlib.animation as animation
 
 class ParticleBox:
@@ -16,7 +15,6 @@ class ParticleBox:
 		self.state = self.init_state.copy()		
 		self.time_elapsed = 0
 		self.bounds = bounds
-		self.termino = False
 		self.pelotas = Ej4.regla_tita(1, 30, 1)
 		self.totalp = self.state.shape[0]
 		for i in range(0, self.totalp):
@@ -58,33 +56,36 @@ ax = plt.axes(xlim=(0, 110), ylim=(0, 110))
 particles, = ax.plot([], [], 'bo', ms=5)
 particles2, = ax.plot([], [], 'ro', ms=5)
 time_text = ax.text(0.02, 0.95, '', transform=ax.transAxes)
+time_text2 = ax.text(0.02, 0.90, '', transform=ax.transAxes)
+time_text3 = ax.text(0.02, 0.85, '', transform=ax.transAxes)
+
 # initialization function: plot the background of each frame
 def init():
 	global box
 	particles.set_data([], [])
 	time_text.set_text('')
+	time_text2.set_text('')
+	time_text3.set_text('')
 	return particles,
 
 pelotas = Ej4.regla_tita(1, 30, 1)
-
-
-t = [40, 8]
-#create index list for frames, i.e. how many cycles each frame will be displayed
-frame_t = []
-for k, item in enumerate(t):
-    frame_t.extend([k] * item)
-
 # animation function.  This is called sequentially
 def animate(i):
 	global box,  dt, ax, fig
 	box.step(dt)
 	plt.scatter(box.state[i, 0], box.state[i, 1], c = 'b')
-	time_text.set_text('time = %.1f' % box.time_elapsed)
+	time_text.set_text('Población Actual = %.1f millones' % i)
+	año = 0
+	for x in pelotas:
+		if (i == x):
+			time_text3.set_text('Año = %.1f' % año)
+			time_text2.set_text('Poblacion por año = %.1f millones' % x)
+		año += 1
 	particles.set_markersize(5)
 	return particles,
 
 # call the animator.  blit=True means only re-draw the parts that have changed.
 anim = animation.FuncAnimation(fig, animate, init_func=init,
-                               frames= int(pelotas[0]), interval=100, repeat=True)
+                               frames= int(pelotas[30]), interval=100, repeat=True)
 
 plt.show()
