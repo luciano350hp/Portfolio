@@ -21,7 +21,8 @@ class ParticleBox:
 			self.state[i, 1] = -1 #Borro el tablero inicial
 		
 	def step(self, dt):
-		"""step once by dt seconds"""
+		"""step once by dt seconds
+		   Pone las pelotitas hasta el limite del vector generado. """
 		self.time_elapsed += dt
 		for a in self.pelotas:
 			a= int(a)
@@ -30,7 +31,7 @@ class ParticleBox:
 				self.state[j, 1] = self.init_state[j, 1]
 				
 def buildBox(delta, bounds):
-	#------------------------------------------------------------
+	""" Tablero inicial de 100 * 100 con pelotitas. """
 	# set up initial state
 	totalRows = 0
 	for i in range(bounds[0]+delta, bounds[1]-delta, delta):
@@ -64,13 +65,16 @@ def init():
 	global box
 	particles.set_data([], [])
 	time_text.set_text('')
-	time_text2.set_text('')
-	time_text3.set_text('')
+	time_text2.set_text('Poblacion por año = ')
+	time_text3.set_text('Año = 0')
 	return particles,
 
 pelotas = Ej4.regla_tita(1, 30, 1)
 # animation function.  This is called sequentially
 def animate(i):
+	""" Genera una pelota por intervalo.
+		Se muestra en pantalla la poblacion y los años
+		correspondientes al crecimiento exponencial. """
 	global box,  dt, ax, fig
 	box.step(dt)
 	plt.scatter(box.state[i, 0], box.state[i, 1], c = 'b')
