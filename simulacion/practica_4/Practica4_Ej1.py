@@ -13,26 +13,32 @@ def discretizar(L1, T1, deltax, deltat):
     return(t, x)
 
 #FIJO VARIABLES GLOBALES
-L = 5
-T = 5
-deltax = 0.5
+L = 20
+T = 10
+deltax = 1
 deltat = 1
 c = 1
 C = c * (deltat/deltax)
 vec = discretizar(L, T, deltax, deltat)
 print("El vector discreto es: \n ", vec, "\n")
-I = np.sin(vec[1])
+#I = np.sin(vec[1])
+u = np.zeros((T//deltat+1,L//deltax+1),dtype=float)
+print ("u es", u )
+print("cantidad de filas: ", len(u))
+print("cantidad de columnas: ", len(u[1]))
+
 
 #PASO 2
-def tiempo0(I1):
+def tiempo0():
 	""" Calcula u(x,t) en t = 0.
 		u(x, 0) = I(x). """
-	I1[0] = 0 #Por condicion inicial de borde
-	I1[len(I1)-1] = 0 #Por condicion inicial de borde
-	print("La funcion I(x) vale: \n ", I1, "\n")
-	return(I1)
+	global u, vec
+	u[0] = np.sin(vec[1]) #Producto Vectorial
+	u[0][0] = 0 #Por condicion inicial de borde
+	u[0][-1] = 0 #Por condicion inicial de borde
+	print ("u0 es", u )
 
-u = tiempo0(I)
+g = tiempo0()
 
 #PASO 3
 def tiempo1(u):
@@ -43,6 +49,19 @@ def tiempo1(u):
 	return u1
 	
 b = tiempo1(u) 
+
+#PASO 4
+
+# def recurrencia():
+	# vector = [u, b]
+	# for g in range (1, len(vec[1])-2):
+		# u2 = []
+		# for j in range (2, len(vec[0])-1):
+			# u2.append(-vector[j-2][g])
+	# vector = np.asarray(vector)
+	# print("El vector es", vector)
+
+# rec = recurrencia()
 
 # First set up the figure, the axis, and the plot element we want to animate
 fig = plt.figure()
@@ -64,16 +83,16 @@ def animate(i):
 		plt.plot(b, c = 'r')
 	else:
 		plt.clf()
-		u0 = np.copy(u)
-		u1 = np.copy(b)
-		vector = [u0, u1]
-		print("El vector vale: \n ", vector, "\n")
-		for i in range (2, len(vec[0])):
-			for g in range (1, len(vec[1])-2):
-				for j in range (2, len(vec[1])-2):
-					vector.append(-vector[j-2][g] + 2 * vector[j-1][g] +((C**2) * (vector[j-1][g+1]- 2*vector[j-1][g] + vector[j-1][g-1])))
-		vector = np.asarray(vector)
-		print("El vector vale: \n ", vector, "\n")
+		# u0 = np.copy(u)
+		# u1 = np.copy(b)
+		# vector = [u0, u1]
+		# print("El vector vale: \n ", vector, "\n")
+		#for i in range (2, len(vec[0])):
+		#	for g in range (1, len(vec[1])-2):
+		#		for j in range (2, len(vec[1])-2):
+		#			vector.append(-vector[j-2][g] + 2 * vector[j-1][g] +((C**2) * (vector[j-1][g+1]- 2*vector[j-1][g] + vector[j-1][g-1])))
+		#vector = np.asarray(vector)
+		# print("El vector vale: \n ", vector, "\n")
 			
 # call the animator.  blit=True means only re-draw the parts that have changed.
 anim = animation.FuncAnimation(fig, animate, frames= len(vec[0]), interval=500, repeat=True)
