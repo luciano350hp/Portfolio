@@ -75,6 +75,6 @@ def animate(n):
 	ploteo.set_data(vec[1], u[n])
 	return ploteo,
 	
-anim = animation.FuncAnimation(fig, animate, frames= len(vec[0]), interval=100, repeat=True)
+anim = animation.FuncAnimation(fig, animate, frames= len(vec[0]), interval=50, repeat=True)
 
 plt.show()
