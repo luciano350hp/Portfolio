@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import Practica4_Ej1y2 as Ej2
+#import Practica4_Ej1y2 as Ej2
 from mpl_toolkits.mplot3d import Axes3D
 
 def data(i, z, line):
