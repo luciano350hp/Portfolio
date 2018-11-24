@@ -1,16 +1,21 @@
 #!/usr/bin/python
 
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import animation
 
-def bernouli(p):
+def pascal(m, p):
+	contadorExito = 0
+	listaResultados = []
 	num =  np.random.rand()
-	print(num)
-	if (num < p):
-		return 1
-	else:
-		return 0
-print(bernouli(1/2)) 
-		
+	while (contadorExito < m):
+		while not (num < p):
+			print(num)
+			listaResultados.append(0)
+			num =  np.random.rand()
+		print(num)
+		contadorExito += 1
+		listaResultados.append(1)
+		num =  np.random.rand()
+	print(np.array(listaResultados)) 
+	print ("Se repitió el experimento",len(listaResultados), "veces hasta obtener",m, "exitos")		
+pascal(5, 1/2)
 	
