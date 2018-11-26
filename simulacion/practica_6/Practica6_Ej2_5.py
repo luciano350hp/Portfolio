@@ -11,9 +11,9 @@ def hipergeometrica(r, b, k):
 		listaBolitas.append('blue')
 	shuffle(listaBolitas) #Las mezclo de forma random
 	print("Las bolitas en la bolsa son: ",np.array(listaBolitas))
-	listaBolitask = np.random.choice(listaBolitas, k, replace=False)
+	listaBolitask = np.random.choice(listaBolitas, k, replace=False) #Elijo k bolitas
 	print("Se tomaron",k,"bolitas: ", listaBolitask)
-	listaRojas = list(filter(lambda x: (x == 'red') , listaBolitask))
+	listaRojas = list(filter(lambda x: (x == 'red'), listaBolitask)) #Filtro las rojas
 	print("De esa muestra hay",len(listaRojas),"bolitas rojas")
 hipergeometrica(10, 7, 5) 
 		
