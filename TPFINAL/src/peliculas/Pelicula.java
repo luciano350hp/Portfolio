@@ -9,7 +9,7 @@ package peliculas;
  *
  * @author Luciano
  */
-public class PELICULA {
+public class Pelicula {
 
     /**
      * @param args the command line arguments
