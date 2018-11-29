@@ -9,13 +9,22 @@ package peliculas;
  *
  * @author Luciano
  */
-public class Pelicula {
+public class Pelicula implements ProxyPelicula {
+    private ProxyPelicula pl;
+    private String trailer;
+    private float calificacionPromedio;
+    private String comentarios;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Hola mundo");
+    @Override
+    public String toString() {
+        return "Pelicula{" + "pl=" + pl + ", trailer=" + trailer + ", calificacionPromedio=" + calificacionPromedio + ", comentarios=" + comentarios + '}';
+    }
+
+    public Pelicula(ProxyPelicula pl, String trailer, float calificacionPromedio, String comentarios) {
+        this.pl = pl;
+        this.trailer = trailer;
+        this.calificacionPromedio = calificacionPromedio;
+        this.comentarios = comentarios;
     }
     
 }
