@@ -15,5 +15,11 @@ public class Main {
         Peliculas peliculas = new Peliculas();
         peliculas.lista();
         peliculas.imprimir();
+        peliculas.CalificarPelicula(peliculas.titanic1, 2);
+        peliculas.imprimir();
+        peliculas.CalificarPelicula(peliculas.titanic1, 4);
+        peliculas.CalificarPelicula(peliculas.titanic1, 10);
+        peliculas.imprimir();
+
     }
 }

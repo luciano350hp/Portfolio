@@ -15,7 +15,7 @@ import java.util.List;
 public class Peliculas {
     ArrayList<ProxyPelicula> listaPeliculas = new ArrayList<ProxyPelicula>();
     ProxyPelicula titanic = new ProxyPeliculaImpl("Titanic", "link a la imagen", "James Cameron", "Di caprio, Kate Winslet", "Drama", "Se hunde un barco", "titanic, barco, mar", "1997", "195");
-    Pelicula titanic1 = new Pelicula(titanic,"link al trailer",9.50F,"Excelente, llore todo el dia. La mejor peli nacional");
+    Pelicula titanic1 = new Pelicula(titanic,"link al trailer",0,"Excelente, llore todo el dia. La mejor peli nacional");
     
     public void lista() {
         listaPeliculas.add(titanic);
@@ -25,6 +25,10 @@ public class Peliculas {
     public void imprimir(){
         for(ProxyPelicula obj:listaPeliculas)
             System.out.println(obj.toString());  
+    }
+    
+    public void CalificarPelicula(Pelicula pelicula, double calificacion){
+        pelicula.AgregarCalificacion(calificacion);
     }
     
 }

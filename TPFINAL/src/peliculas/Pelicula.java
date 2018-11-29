@@ -5,14 +5,17 @@
  */
 package peliculas;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Luciano
  */
 public class Pelicula implements ProxyPelicula {
     private ProxyPelicula pl;
+    ArrayList<Double> listaCalificaciones = new ArrayList<Double>();
     private String trailer;
-    private float calificacionPromedio;
+    private double calificacionPromedio;
     private String comentarios;
 
     @Override
@@ -20,11 +23,22 @@ public class Pelicula implements ProxyPelicula {
         return "Pelicula{" + "pl=" + pl + ", trailer=" + trailer + ", calificacionPromedio=" + calificacionPromedio + ", comentarios=" + comentarios + '}';
     }
 
-    public Pelicula(ProxyPelicula pl, String trailer, float calificacionPromedio, String comentarios) {
+    public Pelicula(ProxyPelicula pl, String trailer, double calificacionPromedio, String comentarios) {
         this.pl = pl;
         this.trailer = trailer;
         this.calificacionPromedio = calificacionPromedio;
         this.comentarios = comentarios;
     }
+    
+    public void AgregarCalificacion(double calificacion){
+        listaCalificaciones.add(calificacion);
+        double n = 0;
+        for (int i = 0; i < listaCalificaciones.size(); i++) {
+            n += Double.parseDouble(listaCalificaciones.get(i).toString());
+        }
+        double promedio = n/listaCalificaciones.size();
+        this.calificacionPromedio = promedio;
+    }
+    
     
 }
