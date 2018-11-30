@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package peliculas;
 
 import java.util.*;
-package peliculas;
 
 
 /**
@@ -48,7 +48,7 @@ public class Peliculas {
     }
 
     public void imprimir(){
-        Arrays.sort(listaPeliculas);
+        
 
         for(ProxyPelicula obj:listaPeliculas)
             System.out.println(obj.toString());  
