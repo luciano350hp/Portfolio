@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package peliculas;
 
 import java.util.ArrayList;
 
@@ -11,7 +10,9 @@ import java.util.ArrayList;
  *
  * @author Luciano
  */
-public class Pelicula implements ProxyPelicula {
+ 
+package peliculas;
+public class Pelicula implements ProxyPelicula, Comparable<Pelicula> {
     private ProxyPelicula pl;
     ArrayList<Double> listaCalificaciones = new ArrayList<Double>();
     private String trailer;
@@ -39,6 +40,22 @@ public class Pelicula implements ProxyPelicula {
         double promedio = n/listaCalificaciones.size();
         this.calificacionPromedio = promedio;
     }
+    
+    public double getcalificacionPromedio(){
+          return this.calificacionPromedio;
+          }
+          
+    @Override
+    public int compareTo(Pelicula p) {
+      if (this.calificacionPromedio < p.calificacionPromedio) {
+        return -1;
+        }
+      if (this.calificacionPromedio > this.calificacionPromedio) {
+        return 1;
+            }
+        return 0;
+        }
+        
     
     
 }

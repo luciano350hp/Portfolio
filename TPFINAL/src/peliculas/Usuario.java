@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package peliculas;
 
 /**
  *
  * @author Luciano
  */
+package peliculas;
+
 public class Usuario {
     private String nombre;
     public static void prueba(String[] args) {
