@@ -12,5 +12,6 @@ package peliculas;
 
 public interface ProxyPelicula {
     public String toString();
+    public String getGenero();
 
 }

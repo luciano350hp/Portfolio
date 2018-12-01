@@ -14,6 +14,8 @@ import java.util.ArrayList;
  
 
 public class Pelicula implements ProxyPelicula{
+
+
     private ProxyPelicula pl;
     ArrayList<Double> listaCalificaciones = new ArrayList<Double>();
     private String trailer;
@@ -24,7 +26,12 @@ public class Pelicula implements ProxyPelicula{
     public String toString() {
         return "Pelicula{" + "pl=" + pl + ", trailer=" + trailer + ", calificacionPromedio=" + calificacionPromedio + ", comentarios=" + comentarios + '}';
     }
-
+    
+    @Override
+    public String getGenero(){
+        return pl.getGenero();
+    }
+    
     public Pelicula(ProxyPelicula pl, String trailer, double calificacionPromedio, String comentarios) {
         this.pl = pl;
         this.trailer = trailer;
@@ -42,20 +49,20 @@ public class Pelicula implements ProxyPelicula{
         this.calificacionPromedio = promedio;
     }
     
+    public void AgregarComentario(String comentario){
+        this.comentarios = this.comentarios + " .***. "  + comentario;
+    }
+    
     public double getcalificacionPromedio(){
           return this.calificacionPromedio;
           }
+    
+    public ProxyPelicula getPl() {
+        return pl;
+    }
+
           
     
-    public int compareTo(Pelicula p) {
-      if (this.calificacionPromedio < p.calificacionPromedio) {
-        return -1;
-        }
-      if (this.calificacionPromedio > this.calificacionPromedio) {
-        return 1;
-            }
-        return 0;
-        }
         
     
     

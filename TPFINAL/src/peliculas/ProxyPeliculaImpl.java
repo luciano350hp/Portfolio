@@ -11,6 +11,7 @@
 package peliculas;
 
 public class ProxyPeliculaImpl implements ProxyPelicula{
+
     private String titulo;
     private String imagen;
     private String director;
@@ -32,9 +33,14 @@ public class ProxyPeliculaImpl implements ProxyPelicula{
         this.fechaLazamiento = fechaLazamiento;
         this.duracion = duracion;
     }
-
+    
     @Override
     public String toString() {
         return "ProxyPelicula{" + "titulo=" + titulo + ", director=" + director + ", actores=" + actores + ", genero=" + genero + ", sinopsis=" + sinopsis + ", palabrasClave=" + palabrasClave + ", fechaLazamiento=" + fechaLazamiento + ", duracion=" + duracion + '}';
-    }    
+    } 
+    
+    public String getGenero() {
+        return genero;
+    }
+    
 }
