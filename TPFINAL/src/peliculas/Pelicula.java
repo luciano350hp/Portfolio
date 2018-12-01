@@ -75,9 +75,4 @@ public class Pelicula implements ProxyPelicula{
         return pl;
     }
 
-          
-    
-        
-    
-    
 }

@@ -82,15 +82,5 @@ public class Main {
             d = dato.nextInt();
         }
            
-        }
-
-        
-
-
-
-
-
-
-
-    
+        }    
 }
