@@ -38,6 +38,18 @@ public class ProxyPeliculaImpl implements ProxyPelicula{
     public String toString() {
         return "ProxyPelicula{" + "titulo=" + titulo + ", director=" + director + ", actores=" + actores + ", genero=" + genero + ", sinopsis=" + sinopsis + ", palabrasClave=" + palabrasClave + ", fechaLazamiento=" + fechaLazamiento + ", duracion=" + duracion + '}';
     } 
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getPalabrasClave() {
+        return palabrasClave;
+    }
     
     public String getGenero() {
         return genero;

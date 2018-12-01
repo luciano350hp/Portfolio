@@ -11,5 +11,8 @@ package peliculas;
  */
 public interface Filtrado {
     public void top10();
-    public void filtradoPorGenero();
+    public boolean imprimirPelicula(String titulo);
+    public void ordenPorGenero();
+    public void filtradoDirector(String director);
+    public void filtradoPalabrasClave(String palabras);
 }

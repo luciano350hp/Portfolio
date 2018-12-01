@@ -31,7 +31,21 @@ public class Pelicula implements ProxyPelicula{
     public String getGenero(){
         return pl.getGenero();
     }
+    @Override
+    public String getTitulo(){
+        return pl.getTitulo();
+    }
     
+    @Override
+    public String getDirector() {
+        return pl.getDirector();
+    }
+    
+    @Override
+    public String getPalabrasClave() {
+        return pl.getPalabrasClave();
+    }
+  
     public Pelicula(ProxyPelicula pl, String trailer, double calificacionPromedio, String comentarios) {
         this.pl = pl;
         this.trailer = trailer;
