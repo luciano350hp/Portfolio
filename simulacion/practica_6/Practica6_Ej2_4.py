@@ -1,21 +1,15 @@
 #!/usr/bin/python
 
 import numpy as np
+import Practica6_Ej2_2 as geometrica
 
 def pascal(m, p):
 	contadorExito = 0
-	listaResultados = []
-	num =  np.random.rand()
+	contadork = 0
 	while (contadorExito < m):
-		while not (num < p):
-			print(num)
-			listaResultados.append(0)
-			num =  np.random.rand()
-		print(num)
+		contadork += geometrica.geometrica(p)
 		contadorExito += 1
-		listaResultados.append(1)
-		num =  np.random.rand()
-	print(np.array(listaResultados)) 
-	print ("Se repitió el experimento",len(listaResultados), "veces hasta obtener",m, "exitos")		
+	print ("Se repitió el experimento",contadork, "veces hasta obtener",m, "exitos")
+	return contadork
 pascal(5, 1/2)
 	

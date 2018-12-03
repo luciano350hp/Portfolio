@@ -2,13 +2,10 @@
 
 import numpy as np
 
-def bernouli(p):
+def bernoulli(p):
 	num =  np.random.rand()
 	print(num)
 	if (num < p):
 		return 1
 	else:
 		return 0
-print(bernouli(1/2)) 
-		
-	
