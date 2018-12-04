@@ -8,9 +8,12 @@
  *
  * @author Luciano
  */
- 
-public class Main{
-    public static void main(String args[])
-    {
+public class Servidor {
+    private double mu;
+    private Cliente cliente1;
+    
+    public void atenderCliente(){
+        
     }
-  }
+    
+}

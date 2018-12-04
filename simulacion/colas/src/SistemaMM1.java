@@ -8,9 +8,11 @@
  *
  * @author Luciano
  */
- 
-public class Main{
-    public static void main(String args[])
-    {
-    }
-  }
+public class SistemaMM1 {
+    private double TiempoGlobal;
+    private Cola cola1;
+    private double tiempoProximoCliente;
+    private double tiempoFinServicio;
+    private Servidor servidor;
+    
+}

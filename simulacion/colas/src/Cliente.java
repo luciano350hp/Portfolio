@@ -14,10 +14,35 @@ public class Cliente{
     private int id;
     private double TiempoLlegada;
     private double TiempoSalida;
-    
-    public static void imprimir()
-    {
-        System.out.println("Hola mundo");
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getTiempoLlegada() {
+        return TiempoLlegada;
+    }
+
+    public void setTiempoLlegada(double TiempoLlegada) {
+        this.TiempoLlegada = TiempoLlegada;
+    }
+
+    public double getTiempoSalida() {
+        return TiempoSalida;
+    }
+
+    public void setTiempoSalida(double TiempoSalida) {
+        this.TiempoSalida = TiempoSalida;
+    }
+
+    public Cliente(int id, double TiempoLlegada, double TiempoSalida) {
+        this.id = id;
+        this.TiempoLlegada = TiempoLlegada;
+        this.TiempoSalida = TiempoSalida;
     }
   } 
 
