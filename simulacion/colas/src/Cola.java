@@ -13,6 +13,23 @@ import java.util.Queue;
  * @author Luciano
  */
 public class Cola {
-    Queue<Cliente> cola=new LinkedList();
+    ArrayList<Cliente> cola1 = new ArrayList<CLiente>();
+    public void  encolar(Cliente c){
+      cola1.add(c);
+    }
+    
+    public void desencolar(Cliente c){
+      cola1.remove(0);_
+      }
+    
+    public static double calcular(double lambdaa)
+    {
+      double num = (double)(Math.random()*1);
+      num = - (1/lambdaa) * (Math.log(1-num));
+      return num;
+    }
+    
+    
+    
 
 }
