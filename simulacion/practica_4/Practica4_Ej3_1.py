@@ -23,7 +23,7 @@ vec = discretizar(L, T, deltax, deltat)
 
 print("El vector discreto es: \n ", vec, "\n")
 
-I = (1/5) * (vec[1]**2) + (2 * vec[1])
+I = -1/5 * (vec[1]**2) + (2 * vec[1])
 u = np.zeros((T//deltat+1,L//deltax+1),dtype=float)
 
 print("cantidad de filas: ", len(u)) 
