@@ -11,17 +11,8 @@
  
 public class Cliente{
   
-    private int id;
     private double TiempoLlegada;
     private double TiempoSalida;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public double getTiempoLlegada() {
         return TiempoLlegada;
@@ -38,11 +29,13 @@ public class Cliente{
     public void setTiempoSalida(double TiempoSalida) {
         this.TiempoSalida = TiempoSalida;
     }
-
-    public Cliente(int id, double TiempoLlegada, double TiempoSalida) {
-        this.id = id;
-        this.TiempoLlegada = TiempoLlegada;
-        this.TiempoSalida = TiempoSalida;
+    public Cliente() {
     }
+
+    public Cliente(double TiempoLlegada) {
+        this.TiempoLlegada = TiempoLlegada;
+    }
+
+
   } 
 

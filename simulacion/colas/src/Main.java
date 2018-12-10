@@ -12,5 +12,9 @@
 public class Main{
     public static void main(String args[])
     {
+        Cola cola = new Cola();
+        Servidor servidor = new Servidor(1);
+        SistemaMM1 sistema = new SistemaMM1(0,cola,1,1,servidor);
+        sistema.procesar();
     }
   }
