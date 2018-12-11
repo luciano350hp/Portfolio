@@ -1,5 +1,7 @@
 package src;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,13 +17,16 @@ public class Cliente{
   
     private double TiempoLlegada;
     private double TiempoSalida;
+    private final int id;
+    private static final AtomicInteger count = new AtomicInteger(0); 
+
 
     public double getTiempoLlegada() {
         return TiempoLlegada;
     }
 
     public void imprimir_TiempoLlegada() {
-        System.out.println("El cliente llego al sistema a los: " + this.TiempoLlegada + " Segundos");
+        System.out.println("El cliente " + this.getId() + " llegó al sistema a los: " + this.TiempoLlegada + " Segundos");
     }
 
     public double getTiempoSalida() {
@@ -31,11 +36,14 @@ public class Cliente{
     public void setTiempoSalida(double TiempoSalida) {
         this.TiempoSalida = TiempoSalida;
     }
-    public Cliente() {
+
+    public int getId() {
+        return id;
     }
 
     public Cliente(double TiempoLlegada) {
         this.TiempoLlegada = TiempoLlegada;
+        this.id = count.incrementAndGet(); 
     }
 
 

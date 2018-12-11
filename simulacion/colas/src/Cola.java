@@ -26,11 +26,9 @@ public class Cola {
       }
     
     public boolean empty(){
-        System.out.println("La cola esta vacia");
         return (cola1.isEmpty());
     }
      public void imprimir_cantidadClientes(){
          System.out.println("La cola tiene: " + cola1.size() + " Clientes");
      }
-    
 }

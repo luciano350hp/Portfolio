@@ -21,17 +21,15 @@ public class Servidor {
     public double atender(Cliente cliente1){
         c = cliente1;
         double tiempoAtencion = SistemaMM1.exponencial(this.mu);
-        System.out.println("El servidor atendera al Cliente en: " + tiempoAtencion + " Segundos");
+        System.out.println("El servidor atenderá al Cliente " + c.getId());
         return  tiempoAtencion;
     }
 
     public void finalizarAtencion(){
         c = null;
-        System.out.println("Se finalizo la atencion del cliente");
     }
     
     public boolean ocioso(){
-        System.out.println("El servidor esta ocioso");
         return c == null;
     }
 }

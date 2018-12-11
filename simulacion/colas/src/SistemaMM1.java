@@ -1,4 +1,5 @@
 package src;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,16 +44,15 @@ public class SistemaMM1 {
               cola1.encolar(c1);
               cola1.imprimir_cantidadClientes();
               this.tiempoProximoCliente = TiempoGlobal + exponencial(this.lambda);
-              System.out.println("El proximo Cliente llegara a los: " + this.tiempoProximoCliente + " Segundos");
+              System.out.println("El proximo Cliente llegará a los: " + this.tiempoProximoCliente + " Segundos");
             } else {
               TiempoGlobal = tiempoFinServicio;
-              cola1.imprimir_cantidadClientes();
+              System.out.println("El cliente " + (servidor.c.getId()) + " finalizó su atencion a los: " + this.TiempoGlobal +" Segundos");
               servidor.finalizarAtencion();
               cola1.imprimir_cantidadClientes();
-              System.out.println("El cliente finalizo su atencion a los: " + this.TiempoGlobal +" Segundos");
             }
             if (servidor.ocioso() && !cola1.empty()) {
-              cola1.imprimir_cantidadClientes();
+              System.out.println("El servidor esta ocioso");
               tiempoFinServicio = TiempoGlobal + servidor.atender(cola1.desencolar());
             }
             
