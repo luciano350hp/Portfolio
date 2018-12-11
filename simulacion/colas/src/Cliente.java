@@ -1,3 +1,5 @@
+package src;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,8 +20,8 @@ public class Cliente{
         return TiempoLlegada;
     }
 
-    public void setTiempoLlegada(double TiempoLlegada) {
-        this.TiempoLlegada = TiempoLlegada;
+    public void imprimir_TiempoLlegada() {
+        System.out.println("El cliente llego al sistema a los: " + this.TiempoLlegada + " Segundos");
     }
 
     public double getTiempoSalida() {
