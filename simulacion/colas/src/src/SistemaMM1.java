@@ -49,13 +49,11 @@ public class SistemaMM1 {
               TiempoGlobal = tiempoFinServicio;
               System.out.println("El cliente " + (servidor.c.getId()) + " finalizó su atencion a los: " + this.TiempoGlobal +" Segundos");
               servidor.finalizarAtencion();
-              cola1.imprimir_cantidadClientes();
             }
             if (servidor.ocioso() && !cola1.empty()) {
               System.out.println("El servidor esta ocioso");
               tiempoFinServicio = TiempoGlobal + servidor.atender(cola1.desencolar());
             }
-            
         }
     }
     
