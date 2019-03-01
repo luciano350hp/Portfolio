@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# PuenteH
+#
+DEF PuenteH U 0 40 Y Y 1 F N
+F0 "U" 350 -100 60 H I C CNN
+F1 "PuenteH" 350 -350 60 H V C CNN
+F2 "" 350 -100 60 H I C CNN
+F3 "" 350 -100 60 H I C CNN
+DRAW
+S -150 -400 850 -950 0 1 0 N
+X Enable 1 -350 -450 200 R 50 50 1 1 I
+X Input_9V 2 -350 -600 200 R 50 50 1 1 I
+X GND 3 -350 -750 200 R 50 50 1 1 I
+X Input_GiroIzq 4 1050 -450 200 L 50 50 1 1 I
+X Input_GiroDer 5 1050 -600 200 L 50 50 1 1 I
+X Salida1Motor 6 1050 -750 200 L 50 50 1 1 I
+X Salida2Motor 7 1050 -900 200 L 50 50 1 1 I
+X SalidaPIC 8 -350 -900 200 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+#End Library
