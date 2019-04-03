@@ -2,7 +2,6 @@
 
 import re
 
-#1er intento...
 str = 'nombre1,apellido1,DNI1/nombre2,apellido2,DNI2/nombre3,apellido3,DNI3'
 match = re.search(r'(\w+\d),(\w+\d)', str)
 if match:
