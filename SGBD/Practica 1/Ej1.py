@@ -1,9 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 import re
-
-#str = 'PXXII'
-
 
 def esNumeroRomano():
 	c = input('ingrese cadena: ')

@@ -3,29 +3,31 @@
 import re
 import collections
 
-#1er intento...
 textoV1 = ''
 archivo = open("king_lear.txt", 'r')
 lista = archivo.read()
+
+#texto en minusculas
 lista = lista.lower()
-#lista = lista.strip()
 
 
+#texto en minusculas sin puntuacion
 texto = re.findall(r'[^.,:;<>()¿?!]+', lista)
 for palabra in texto:
 		textoV1 = textoV1 + palabra
 		
-#print (textoV1)	#texto en minusculas sin puntuacion
-
+#texto sin \n
 textoV1 = textoV1.replace('\n',' ')
 
-#print (textoV1)
-
+#Armo lista de todas las palabras del texto
 listaPalabras = textoV1.split(' ')
 
+#Armo lista de ocurrencias
 listaOcurrenciasPalabras = collections.Counter(listaPalabras)
 
 print (listaOcurrenciasPalabras)
+print ("******")
 print (listaPalabras)
+print ("******")
 print (len(listaPalabras))
 
