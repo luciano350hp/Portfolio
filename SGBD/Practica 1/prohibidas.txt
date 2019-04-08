@@ -1,6 +1,5 @@
 i
 not
-cannot
 in
 you
 the
@@ -17,6 +16,7 @@ be
 by
 to
 an
+who
 will
 he
 her
@@ -24,6 +24,13 @@ am
 as
 are
 that
+ts
+such
+how
+wre
+reg
+po
+lke
 have
 our
 whch
@@ -38,4 +45,3 @@ kw
 what
 for
 but
-sr

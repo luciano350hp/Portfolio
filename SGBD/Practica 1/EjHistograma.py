@@ -23,13 +23,13 @@ listaOcurrenciasPalabras = listaOcurrencias(listaPalabras)
 lista10palabras = []
 lista10ocurrencias = []
 
-# TOMO LAS PRIMERAS 45 PALABRAS
-for word, count in listaOcurrenciasPalabras.most_common(45):	
+# TOMO LAS PRIMERAS 66 PALABRAS
+for word, count in listaOcurrenciasPalabras.most_common(66):	
 	lista10palabras.append(word)
 	lista10ocurrencias.append(count)
 
-#ELIMINO 35 PARA QUEDARME CON 10 QUE SEAN REPRESENTATIVAS
-for x in range (0, 35):
+#ELIMINO 56 PARA QUEDARME CON 10 QUE SEAN REPRESENTATIVAS
+for x in range (0, 56):
 	lista10palabras.pop(0)			
 	lista10ocurrencias.pop(0)
 
