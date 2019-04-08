@@ -2,6 +2,9 @@
 
 import re
 
+# EJERCICIO 1
+# EJERCICIO 1.1
+
 def esNumeroRomano():
 	c = input('ingrese cadena: ')
 	match = re.search(r'[XIVDMLC]+', c)

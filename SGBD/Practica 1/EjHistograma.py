@@ -2,50 +2,38 @@
 
 import re
 import collections
+from Funciones import textoSinPalabrasProhibidas
+from Funciones import listaOcurrencias
 
-#import numpy as np
 import matplotlib.pyplot as plt
-#from matplotlib import animation
 
-
-textoV1 = ''
 archivo = open("king_lear.txt", 'r')
 archivo2 = open("prohibidas.txt", 'r')
-texto = archivo.read()
-texto = texto.lower() #minusculas
-lista2 = archivo2.readlines()	#leo lineas del archivo de prohibidas y armo array
-lista2 = list(map(lambda x: x.strip() , lista2)) #Quito el '/n' de la lista de prohibidas
-texto = texto.replace('\n',' ')	#elimino los \n del texto
+textoV1 = archivo.read()
+listaProhibidas1 = archivo2.readlines()
 
-#print (lista2)	#lista de prohibidas
-#print (texto)
+#	ELIMINO DEL TEXTO LAS PALABRAS PROHIBIDAS 
+texto, listaProhibidas = textoSinPalabrasProhibidas(textoV1,listaProhibidas1)
 
-for palabra in lista2:
-		texto = texto.replace(palabra,'')	# reemplazo cada palabra prohibida en el texto
-
-
-#print (texto)
-
-#	Hasta aca tenemos el texto en minusculas sin las palabras prohibidas
-
-#	Hacer lista de 10 palabras mas usadas
+#	SEPARAR Y CONTAR OCURRENCIAS DE LAS PALABRAS	-	ORDENAR DE MODO DESCENDENTE
 listaPalabras = texto.split(' ')
+listaOcurrenciasPalabras = listaOcurrencias(listaPalabras)
 
-listaOcurrenciasPalabras = collections.Counter(listaPalabras)
-
-# print (listaOcurrenciasPalabras)
-
+#Lista 10 Palabras y su cantidad de ocurrencias
 lista10palabras = []
 lista10ocurrencias = []
-# print the 10 most common words and their counts
-for word, count in listaOcurrenciasPalabras.most_common(11):	#11 porq la primer palabra es ''
+
+# TOMO LAS PRIMERAS 45 PALABRAS
+for word, count in listaOcurrenciasPalabras.most_common(45):	
 	lista10palabras.append(word)
 	lista10ocurrencias.append(count)
-	
 
-lista10palabras.pop(0)			#elimino primer elemento ''
-lista10ocurrencias.pop(0)
+#ELIMINO 35 PARA QUEDARME CON 10 QUE SEAN REPRESENTATIVAS
+for x in range (0, 35):
+	lista10palabras.pop(0)			
+	lista10ocurrencias.pop(0)
 
+print (listaOcurrenciasPalabras)
 print (lista10palabras)
 print (lista10ocurrencias)
 

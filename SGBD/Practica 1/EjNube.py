@@ -3,42 +3,28 @@
 import re
 import collections
 import random
+from Funciones import textoSinPalabrasProhibidas
+from Funciones import listaOcurrencias
 
-#import numpy as np
 import matplotlib.pyplot as plt
-#from matplotlib import animation
 
-
-textoV1 = ''
 archivo = open("king_lear.txt", 'r')
 archivo2 = open("prohibidas.txt", 'r')
-texto = archivo.read()
-texto = texto.lower() #minusculas
-lista2 = archivo2.readlines()	#leo lineas del archivo de prohibidas y armo array
-lista2 = list(map(lambda x: x.strip() , lista2)) #Quito el '/n' de la lista de prohibidas
-texto = texto.replace('\n',' ')	#elimino los \n del texto
+textoV1 = archivo.read()
+listaProhibidas1 = archivo2.readlines()
 
-#print (lista2)	#lista de prohibidas
-#print (texto)
+#	ELIMINO DEL TEXTO LAS PALABRAS PROHIBIDAS 
+texto, listaProhibidas = textoSinPalabrasProhibidas(textoV1,listaProhibidas1)
 
-for palabra in lista2:
-		texto = texto.replace(palabra,'')	# reemplazo cada palabra prohibida en el texto
-
-
-#print (texto)
-
-#	Hasta aca tenemos el texto en minusculas sin las palabras prohibidas
-
-#	Hacer lista de 50 palabras mas usadas
+#	SEPARAR Y CONTAR OCURRENCIAS DE LAS PALABRAS	-	ORDENAR DE MODO DESCENDENTE
 listaPalabras = texto.split(' ')
+listaOcurrenciasPalabras = listaOcurrencias(listaPalabras)
 
-listaOcurrenciasPalabras = collections.Counter(listaPalabras)
+listaOcurrenciasPalabras2 = listaOcurrenciasPalabras.most_common(51)
 
-listaOcurrenciasPalabras2 = listaOcurrenciasPalabras.most_common(50)
-
+#Elimino el espacio vacio
+listaOcurrenciasPalabras2.pop(0) 
 print (listaOcurrenciasPalabras2)
-
-
 
 
 def text_size(total):
@@ -48,8 +34,7 @@ def text_size(total):
 for palabra, ocurrencia in listaOcurrenciasPalabras2:
 	plt.text(random.randint(0, 1000),random.randint(0, 1000), palabra,ha='center', va='center',size=text_size(ocurrencia))
 
-plt.xlabel("Popularity on Job Postings")
-plt.ylabel("Popularity on Resumes")
+plt.xlabel("50 PALABRAS MAS REPRESENTATIVAS")
 plt.axis([0, 1000, 0, 1000])
 plt.xticks([])
 plt.yticks([])
