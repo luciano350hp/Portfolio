@@ -1,1 +1,3 @@
 outliers: Valores por fuera del promedio.
+Av. Avellaneda 1023, Buenos Aires
+-34.6170222,-58.4451252
