@@ -31,8 +31,9 @@ SELECT name, lifeexpectancy FROM country WHERE lifeexpectancy = (select min(life
 \echo Subqueries 3
 SELECT name, indepyear FROM country WHERE continent = (select continent from country where indepyear = (select min(indepyear) from country));
 
-\echo Subqueries 4
-SELECT DISTINCT continent FROM country WHERE continent IN (select continent FROM country ORDER BY gnp DESC LIMIT 10);
+\echo Subqueries 4 Los continentes con mayor gnp con contar sin ultimos 3
+
+SELECT continent from country GROUP BY continent order by sum(gnp) desc LIMIT 4;
 
 \echo Join 1
 SELECT name, language FROM country, countrylanguage WHERE code = countrycode AND continent = 'Oceania';

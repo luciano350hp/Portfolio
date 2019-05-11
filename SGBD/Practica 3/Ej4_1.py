@@ -13,10 +13,9 @@ try:
 	cur.execute('SELECT code2, code FROM country;')
 	rows = cur.fetchall()
 	diccionario = {}
-
 	for row in rows:
 		diccionario[row[0]] = row [1] 
-	print(diccionario)
+	#print(diccionario)
 
 except psycopg2.DatabaseError as e:
 
