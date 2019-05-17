@@ -4,10 +4,6 @@
 import re
 import collections
 
-archivo2 = open("prohibidas.txt", 'r')
-listaProhibidas2 = archivo2.readlines()
-
-
 def textoSinPuntuacion(textoV1):
 	texto = ""
 	listaPalabras = re.findall(r'[^.,:;<>_()¿?!\'\[\]\-]+', textoV1)
