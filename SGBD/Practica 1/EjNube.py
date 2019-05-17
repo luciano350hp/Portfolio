@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import re
 import collections
@@ -20,7 +21,7 @@ texto, listaProhibidas = textoSinPalabrasProhibidas(textoV1,listaProhibidas1)
 listaPalabras = texto.split(' ')
 listaOcurrenciasPalabras = listaOcurrencias(listaPalabras)
 
-listaOcurrenciasPalabras2 = listaOcurrenciasPalabras.most_common(51)
+listaOcurrenciasPalabras2 = listaOcurrenciasPalabras.most_common(50)
 
 #Elimino el espacio vacio
 listaOcurrenciasPalabras2.pop(0) 

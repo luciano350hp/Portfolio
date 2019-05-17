@@ -19,6 +19,6 @@ print (filtro_CABA)
 
 print("La cantidad de propiedades es:", len(filtro_CABA))
 
-filtro_CABA.plot.scatter(x='lat', y='lon')
+filtro_CABA.plot.scatter(x='lon', y='lat')
 
 plt.show()

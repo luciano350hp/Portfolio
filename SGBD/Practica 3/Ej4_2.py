@@ -12,7 +12,7 @@ try:
 	f = open('top-1m.csv', 'r')
 	csv = f.readlines()
 	
-	#SE AGREGAN CLAVES AL DICCINARIO 
+	#SE AGREGAN DOMINIOS AL DICCIONARIO QUE APUNTAN AL MISMO PAIS 
 	Ej4_1.diccionario['UK'] = 'GBR'
 	Ej4_1.diccionario['GG'] = 'GBR'
 	Ej4_1.diccionario['IM'] = 'GBR'

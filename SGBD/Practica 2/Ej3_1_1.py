@@ -14,4 +14,4 @@ precio_deptos_2amb = (data.ix[(data.state_name == 'Capital Federal') & (data.roo
 print(precio_deptos_2amb)
 
 #CALCULO EL VALOR MEDIO DEL PRECIO DE LAS PROPIEDADES DE 2 AMBIENTES DE CABA
-print("El valor medio de las propiedades de CABA de 2 ambientes es:\n", np.mean(precio_deptos_2amb))
+print("El valor medio de las propiedades de CABA de 2 ambientes es:\n", precio_deptos_2amb.mean())

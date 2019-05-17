@@ -1,7 +1,12 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import re
 import collections
+
+archivo2 = open("prohibidas.txt", 'r')
+listaProhibidas2 = archivo2.readlines()
+
 
 def textoSinPuntuacion(textoV1):
 	texto = ""
@@ -18,22 +23,22 @@ def listaOcurrencias(listaPalabras):
 	listaOcurrenciasPalabras = collections.Counter(listaPalabras)
 	return listaOcurrenciasPalabras
 
-def textoSinPalabrasProhibidas(textoV2, listaProhibidas2):
-	
+def textoSinPalabrasProhibidas(textoV2, listaProhibidas2):	
 	#	PASAR PALABRAS A MINUSCULAS
 	textoV1 = textoV2.lower()
+	
 	#	DESCARTAR SIGNOS DE PUNTUACION
 	texto = textoSinPuntuacion(textoV1)
-	texto = texto.replace('\n',"")
-
+	
 	#	LISTA DE PALABRAS PROHIBIDAS
 	listaProhibidas = quitarBarraN(listaProhibidas2)
 	
-	#	ELIMINO DEL TEXTO LAS PALABRAS PROHIBIDAS 
-	for palabra in listaProhibidas:
-		texto = texto.replace(palabra,"")
-	return texto, listaProhibidas
-	
+	#	ELIMINO DEL TEXTO LAS PALABRAS PROHIBIDAS
+	texto2 = "" 
+	for palabra in texto.split():
+		if (not palabra in listaProhibidas):
+			texto2 += " " + palabra + " "
+	return texto2,listaProhibidas
 	
 	
 
