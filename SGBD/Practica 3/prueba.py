@@ -12,8 +12,6 @@ from geopandas import GeoSeries, GeoDataFrame
 world = GeoDataFrame.from_file('ne_10m_admin_0_countries.shp')
 world['prueba'] = range(len(world))
 
-
-
 # para ver los colormap, ejecutar colors.py
 #world.plot(column='prueba', colormap='Greens', alpha=0.5, categorical=False, legend=False, axes=None)
 #world.plot(column='prueba', colormap='binary', alpha=0.5, categorical=False, legend=False, axes=None)
@@ -24,8 +22,8 @@ world['prueba'] = range(len(world))
 
 print (world['CONTINENT'].unique())
 
-south = world[world['CONTINENT'] == 'South America']
+south = world['WIKIPEDIA']
 #south.plot(column='prueba', colormap='binary', alpha=0.5, categorical=False, legend=False, axes=None)
-world.plot(column='prueba', colormap='Greens', alpha=0.5, categorical=False, legend=False, axes=None)
 
+world.plot(column='WIKIPEDIA', colormap='RdYlGn_r', alpha=0.5, categorical=False, legend=True, axes=None)
 plt.show()

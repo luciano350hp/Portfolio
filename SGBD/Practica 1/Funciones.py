@@ -6,7 +6,7 @@ import collections
 
 def textoSinPuntuacion(textoV1):
 	texto = ""
-	listaPalabras = re.findall(r'[^.,:;<>_()¿?!\'\[\]\-]+', textoV1)
+	listaPalabras = re.findall(r'[^.,:;\[\]\'<>_()¿?!]+', textoV1)
 	for palabra in listaPalabras:
 		texto = texto + palabra
 	return texto
@@ -26,6 +26,9 @@ def textoSinPalabrasProhibidas(textoV2, listaProhibidas2):
 	#	DESCARTAR SIGNOS DE PUNTUACION
 	texto = textoSinPuntuacion(textoV1)
 	
+	# 	REEMPLAZAR - CON ESPACIO
+	texto = texto.replace('-',' ')
+
 	#	LISTA DE PALABRAS PROHIBIDAS
 	listaProhibidas = quitarBarraN(listaProhibidas2)
 	
@@ -35,7 +38,4 @@ def textoSinPalabrasProhibidas(textoV2, listaProhibidas2):
 		if (not palabra in listaProhibidas):
 			texto2 += " " + palabra + " "
 	return texto2,listaProhibidas
-	
-	
 
-		

@@ -20,19 +20,24 @@ texto1 = texto1.lower()
 #	DESCARTAR SIGNOS DE PUNTUACION
 textoV2 = textoSinPuntuacion(texto1)
 
-textoV2 = textoV2.replace('\n',"")
+# 	REEMPLAZAR - CON ESPACIO
+textoV2 = textoV2.replace('-',' ')
 
 #	SEPARAR Y CONTAR OCURRENCIAS DE LAS PALABRAS	-	ORDENAR DE MODO DESCENDENTE
-listaPalabras = textoV2.split(' ')
+texto = ""
+for palabra in textoV2.split():
+	texto += " " + palabra + " "
 
-listaOcurrenciasPalabras = listaOcurrencias(listaPalabras)
+print (texto)
+
+listaOcurrenciasPalabras = listaOcurrencias(texto.split())
 
 print (listaOcurrenciasPalabras)
 
 
 #	CUANTAS PALABRAS TIENE EL TEXTO?	22735
 
-print (len(listaPalabras))
+print (len(texto))
 
 #	LAS 5 MAS USADAS:
 

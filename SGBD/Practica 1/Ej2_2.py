@@ -3,7 +3,7 @@
 
 import re
 import collections
-from Funciones import textoSinPalabrasProhibidas
+from Funciones import *
 
 # EJERCICIO 2
 # EJERCICIO 2.2	

@@ -5,6 +5,8 @@
 -- Finland, http://www.stat.fi/worldinfigures.
 --
 
+--PRACTICA 3 EJERCICIO 3.4
+
 BEGIN;
 
 SET client_encoding = 'LATIN1';

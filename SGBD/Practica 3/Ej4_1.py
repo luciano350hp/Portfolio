@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#PRACTICA 3 EJERCICIO 4.1
+
 import psycopg2
 import sys
 
