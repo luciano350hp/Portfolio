@@ -23,6 +23,9 @@ try:
 		csv[i] = csv[i].replace('.',',')
 		csv[i] = csv[i].strip()
 	
+	#SI EL PAIS DEL SITIO ESTÁ EN LA DB, SE AGREGA SU CODIGO DE PAÍS.
+	#SI EL SITIO NO TIENE PAÍS, PERO SU TIPO_ENTIDAD ESTÀ EN LA DB, SE AGREGA SU CODIGO DE PAÍS.
+	#EN OTRO CASO SE INSERTA EL REGISTRO SIN CODIGO DE PAIS. 
 	for linea in csv:
 		linea = linea.split(',')
 		id = linea[0]
@@ -47,9 +50,7 @@ try:
 				cur.execute(query, data)
 	con.commit()
 	
-
 except psycopg2.DatabaseError as e:
-
     print(f'Error {e}')
     sys.exit(1)
 
@@ -58,4 +59,3 @@ finally:
 		con.close()
 	if f:
 		f.close()
-

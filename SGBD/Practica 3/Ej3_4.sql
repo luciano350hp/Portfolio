@@ -17,11 +17,6 @@ ALTER TABLE ONLY sitio ADD CONSTRAINT sitio_pkey PRIMARY KEY (id);
 
 ALTER TABLE ONLY sitio ADD CONSTRAINT sitio_countrycode_fkey FOREIGN KEY (countrycode) REFERENCES country(code);
 
---INSERT INTO stats SELECT country.code FROM country;
---UPDATE stats SET cant_lenguas =(SELECT count(language) FROM countrylanguage where countrylanguage.countrycode = stats.countrycode);
---UPDATE stats SET pop_urbana =(SELECT sum(population) FROM city where city.countrycode = stats.countrycode);
-
 COMMIT;
 
-ANALYZE stats;
-
+ANALYZE sitio;
