@@ -1,0 +1,106 @@
+
+
+EJERCICIO 2
+
+
+1. En base al campo \source", determinar la cantidad de usuarios que hay por cada canal.
+
+var mapFunction1 = function() {
+							emit(this.source, this.user.name)								
+					};
+
+var reduceFunction1 = function(canal, usuarios) {
+						count = 0;
+						for (let i = 0; i < usuarios.length; ++i) {
+							if (usuarios.indexOf(usuarios[i]) == i){	//	Traigo el index del usuario, si trae otro es q esta mas de una vez
+								count += 1;}
+						}
+						return count;
+						};
+
+db.tweets.mapReduce(
+					mapFunction1,
+					reduceFunction1,
+					{ out: "usuarios_por_canal" }
+					)
+
+
+db.usuarios_por_canal.find();
+
+
+2. Determinar la cantidad de tweets por cada lenguaje
+
+var mapFunction2 = function() {
+							emit(this.lang, 1)
+							};
+
+var reduceFunction2 = function(lenguaje, tweets) {
+							Array.sum(tweets);
+						};
+
+db.tweets.mapReduce(
+					mapFunction2,
+					reduceFunction2,
+					{ out: "tweets_x_lenguaje" }
+					);
+
+
+> db.tweets_x_lenguaje.find();
+{ "_id" : "ar", "value" : 3 }
+{ "_id" : "ca", "value" : 2 }
+{ "_id" : "de", "value" : 2 }
+{ "_id" : "en", "value" : 2448 }
+{ "_id" : "es", "value" : 2389 }
+{ "_id" : "et", "value" : 1 }
+{ "_id" : "fr", "value" : 25 }
+{ "_id" : "hi", "value" : 1 }
+{ "_id" : "ht", "value" : 1 }
+{ "_id" : "in", "value" : 2 }
+{ "_id" : "it", "value" : 5 }
+{ "_id" : "ja", "value" : 4 }
+{ "_id" : "nl", "value" : 8 }
+{ "_id" : "pl", "value" : 1 }
+{ "_id" : "th", "value" : 36 }
+{ "_id" : "tl", "value" : 2 }
+{ "_id" : "tr", "value" : 1 }
+{ "_id" : "und", "value" : 69 }
+
+
+
+
+3. Clasificar los textos de los tweets en corto (< 10 palabras), mediano (>= 10, < 20 palabras) y largo (>= 20 palabras).
+Devolver la cantidad de tweets en cada una de las clases.
+
+
+
+var mapFunction3 = function() {			
+						int cantPalabras = (this.text).split(/[.,:;\/ -]*¿?¡!$#/);
+
+						
+						if (cantPalabras.length<10){
+							emit('Corto', 1);
+							}
+						else if (cantPalabras.length>=10 && cantPalabras<20){
+							emit('Mediano', 1);
+							}
+						else if (cantPalabras.length>=20){
+							emit('Largo', 1);
+							}
+}
+
+var reduceFunction3 = function(clase, textos) {
+							Array.sum(textos);
+}
+
+db.tweets.mapReduce(
+					mapFunction3,
+					reduceFunction3,
+					{ out: "palabras_x_texto" }
+					);
+
+
+> db.palabras_x_texto.find();
+
+
+
+

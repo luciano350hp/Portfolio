@@ -1,0 +1,2 @@
+head −10000 crisis.20190410.json > tweets.json
+mongoimport −−db test −−collection tweets −−drop −−file tweets.json

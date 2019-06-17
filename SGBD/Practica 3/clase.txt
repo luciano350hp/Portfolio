@@ -1,0 +1,5 @@
+independencia de datos y los programas.
+declarativo: decirle que queremos en vez de como hacerlo.
+cluster: maquinas que se unen para compartir la ram
+consistencia extricta y eventual. db relacional y db no sql.
+

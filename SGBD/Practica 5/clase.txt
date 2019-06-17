@@ -1,0 +1,19 @@
+aprendidaje automatico. Analizar si hay un perro en una imagen.
+predecir si un mail es spam, fraude. Conseguir datos.
+supervisados, no supervisados.
+1 mes para la practica.
+Sobreadaptarse a los datos de entrenamiento.
+metodos de aprendizaje
+variables independientes: b0, b1, b2, b3
+" dependiente: E
+E = f(b0,b1,b2,b3)
+[df/db0, df/db1, df/db2, df/db3]
+
+df/b0 = -2 ...
+
+pagina 152 gradiente estocastico.
+
+desvio estandar: dispersion de los datos. 3 desvios estandares por cada lado tengo el 96% de los datos. campana de gauss. Eliminar outliers.
+Criterio para estimar el nivel socioeconomico del barrio. Valor medio prop 3 ambientess de caba. Sin outliers. ordenar barrios
+
+punto 7 mid square error. Falta un cuadrado.
