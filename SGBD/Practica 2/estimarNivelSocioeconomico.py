@@ -21,7 +21,7 @@ def estimarNivelSocioeconomico(df):
 	mediaPorBarrio = df.groupby('place_name', as_index=False).mean().sort_values('price')
 	diccionario = {}
 	for x in range (0, len(mediaPorBarrio)):
-		diccionario[mediaPorBarrio['place_name'].values[x]] = x+1 
+		diccionario[mediaPorBarrio['place_name'].values[x]] = x+1
 	return diccionario
 	
 #print (estimarNivelSocioeconomico(filtro_CABA1))

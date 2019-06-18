@@ -28,6 +28,8 @@ filtro_CABA1['NS'] = range(len(filtro_CABA1))
 #DICCIONARIO NIVEL SOCIOECONOMICO
 dicNS = Ej2_2.estimarNivelSocioeconomico(filtro_CABA1)
 
+#print(dicNS)
+
 #AGREGO LOS DATOS DEL DICCIONARIO A DB DATAFRAME
 #POR CADA PROPIEDAD, ADJUNTO EL DATO  NS DEL DICCIONARIO
 
@@ -40,4 +42,4 @@ for row in range(len(filtro_CABA1)):
 filtro_CABA1 = (filtro_CABA1.ix[(filtro_CABA1.NS <= 60)])
 		
 df = filtro_CABA1[['NS','surface_total_in_m2', 'rooms', 'price']]
-df.to_csv('dataset1.csv') 
+df.to_csv('dataset.csv', index = False) 

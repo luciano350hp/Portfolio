@@ -1,19 +1,19 @@
 
 
 1. Seleccionar el id y el texto de 10 “documents”
-db.tweets.find({}, {text:1, _id:1}).limit(10)
+db.tweets.find({}, {text:1, _id:1}).limit(10).pretty()
 
 2. Seleccionar los lenguajes distintos de los tweets
 db.tweets.distinct("lang")
 
 3. Seleccionar el id, el nombre, la descripción y la cantidad de followers de aquellos usuarios que tengan más de 100000 followers
-db.tweets.find({"user.followers_count":{$gt: 100000}}, {"user.name":1, "user.description":1, "user.followers_count":1, "user.id":1,_id:0})
+db.tweets.find({"user.followers_count":{$gt: 100000}}, {"user.name":1, "user.description":1, "user.followers_count":1, "user.id":1,_id:0}).pretty()
 
 -- 4. Seleccionar el id, el nombre y la cantidad de followers de los 10 usuarios con mas followers ordenado 
 de manera
 descendente
 
-db.tweets.find({}, {"user.id":1, "user.name":1, "user.followers_count":1, _id:0}).sort({"user.followers_count": -1}).limit(10)
+db.tweets.find({}, {"user.id":1, "user.name":1, "user.followers_count":1, _id:0}).sort({"user.followers_count": -1}).limit(10).pretty()
 
 
 
