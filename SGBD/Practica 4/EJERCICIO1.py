@@ -8,7 +8,7 @@ conn = pymongo.MongoClient()
 db = conn.test
 col = db.tweets
 
-Ej1_1 = col.find({},{'text':'1', '_id':'1', 'user.location':'1'}).limit(10)
+Ej1_1 = col.find({},{'_id':False, 'user.location':'1'}).limit(50)
 
 Ej1_2 = col.distinct("lang")
 
@@ -24,20 +24,21 @@ for doc in Ej1_1:
 	pprint(doc)
 	print('\n')
 
-print("EJERCICIO 1.2", '\n')
-for doc in Ej1_2:
-	pprint(doc)
 
-print('\n')
+#print("EJERCICIO 1.2", '\n')
+#for doc in Ej1_2:
+#	pprint(doc)
 
-print("EJERCICIO 1.3", '\n')
-for doc in Ej1_3:
-	pprint(doc)
+#print('\n')
 
-print('\n')
+#print("EJERCICIO 1.3", '\n')
+#for doc in Ej1_3:
+#	pprint(doc)
+
+#print('\n')
 	
-print("EJERCICIO 1.4", '\n')
-for doc in Ej1_4:
-	pprint(doc)
+#print("EJERCICIO 1.4", '\n')
+#for doc in Ej1_4:
+#	pprint(doc)
 
-print('\n')
+#print('\n')

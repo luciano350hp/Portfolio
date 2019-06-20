@@ -15,29 +15,35 @@ db.tweets.aggregate([ {$group: { _id: "$user.name", total: { $sum: 1 } } },    {
 2. Listar por lenguaje la cantidad de followers del usuario con mayor cantidad de followers que publica en ese lenguaje
 
 
-db.tweets.aggregate([
-     {$group:
-        { _id: "$lang",
-           maxFollowers: {$group: ["$user.name", "$user.followers_count"]} ,{$limit : 10}}
-      	}
-     }
-   ])
+db.tweets.aggregate([ 
+	{$group: 
+		{ 
+		_id: "$lang", 
+		followers: { $max: "$user.followers_count" }
+		}
+	}	
+	])
 
 
 
-db.tweets.aggregate(
-   [
-     {
-       $group:
-         {
-           _id: { day: { $dayOfYear: "$date"}, year: { $year: "$date" } },
-           itemsSold: { $addToSet: "$item" }
-         }
-     }
-   ]
-)
-
-
+{ "_id" : "in", "followers" : 1107 }
+{ "_id" : "et", "followers" : 493 }
+{ "_id" : "tr", "followers" : 0 }
+{ "_id" : "pl", "followers" : 879 }
+{ "_id" : "hi", "followers" : 44 }
+{ "_id" : "de", "followers" : 331 }
+{ "_id" : "th", "followers" : 1362 }
+{ "_id" : "en", "followers" : 5272857 }
+{ "_id" : "es", "followers" : 4789126 }
+{ "_id" : "tl", "followers" : 1077 }
+{ "_id" : "und", "followers" : 99035 }
+{ "_id" : "fr", "followers" : 10424 }
+{ "_id" : "ja", "followers" : 1391 }
+{ "_id" : "ar", "followers" : 77 }
+{ "_id" : "ht", "followers" : 12 }
+{ "_id" : "nl", "followers" : 1483 }
+{ "_id" : "ca", "followers" : 6095 }
+{ "_id" : "it", "followers" : 10278 }
 
 
 

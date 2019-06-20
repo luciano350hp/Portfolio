@@ -6,26 +6,22 @@ EJERCICIO 2
 1. En base al campo \source", determinar la cantidad de usuarios que hay por cada canal.
 
 var mapFunction1 = function() {
-							emit(this.source, this.user.name)								
-					};
+							emit(this.source, 1)
+							};
 
-var reduceFunction1 = function(canal, usuarios) {
-						count = 0;
-						for (let i = 0; i < usuarios.length; ++i) {
-							if (usuarios.indexOf(usuarios[i]) == i){	//	Traigo el index del usuario, si trae otro es q esta mas de una vez
-								count += 1;}
-						}
-						return count;
+var reduceFunction1 = function(key, values) {
+							return Array.sum(values);
 						};
 
 db.tweets.mapReduce(
 					mapFunction1,
 					reduceFunction1,
 					{ out: "usuarios_por_canal" }
-					)
-
+					);
 
 db.usuarios_por_canal.find();
+
+
 
 
 2. Determinar la cantidad de tweets por cada lenguaje
@@ -35,7 +31,7 @@ var mapFunction2 = function() {
 							};
 
 var reduceFunction2 = function(lenguaje, tweets) {
-							Array.sum(tweets);
+							return Array.sum(tweets);
 						};
 
 db.tweets.mapReduce(
@@ -74,23 +70,16 @@ Devolver la cantidad de tweets en cada una de las clases.
 
 
 var mapFunction3 = function() {			
-						int cantPalabras = (this.text).split(/[.,:;\/ -]*¿?¡!$#/);
-
-						
+						cantPalabras = this.text.split(/\s+/);
 						if (cantPalabras.length<10){
-							emit('Corto', 1);
-							}
-						else if (cantPalabras.length>=10 && cantPalabras<20){
-							emit('Mediano', 1);
-							}
+							emit('Corto', 1);}
+						else if (cantPalabras.length>=10 && cantPalabras.length<20){
+							emit('Mediano', 1);}
 						else if (cantPalabras.length>=20){
-							emit('Largo', 1);
-							}
+							emit('Largo', 1);}
 }
 
-var reduceFunction3 = function(clase, textos) {
-							Array.sum(textos);
-}
+var reduceFunction3 = function(key, values) {return Array.sum(values);}
 
 db.tweets.mapReduce(
 					mapFunction3,

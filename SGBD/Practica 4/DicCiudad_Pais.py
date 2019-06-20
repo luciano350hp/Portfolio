@@ -5,31 +5,33 @@
 
 import psycopg2
 import sys
+import pymongo
+from pprint import pprint
+
+conn = pymongo.MongoClient()
+db = conn.test
+col = db.tweets
 
 con = None
+#db.tweets.update({user.location: /+ +/},{user.location: /+ +/},{user.location: /+ +/},{user.location: /+ +/},{$set: {country: + +}}, {multi: true})
 
 try:
 	#DICCIONARIO DE TIPO CODE2:CODE 
 	con = psycopg2.connect(database='world', user='luciano')
 	cur = con.cursor()
 	cur2 = con.cursor()
-	cur.execute('SELECT district, countrycode FROM city;')
-	cur2.execute('SELECT name, countrycode FROM city;')
+	location = col.find({},{'user.location':'1', '_id':False})
+	#cur.execute('SELECT city.name, city.district, city.countrycode, country.name FROM country,city where city.countrycode = country.code;')
+	cur.execute('SELECT country.name FROM country;')
 	rows = cur.fetchall()
-	rows2 = cur2.fetchall()
-	diccionario = {}
 	for row in rows:
-		diccionario[row[0]] = row [1] 
-	for row in rows2:
-		diccionario[row[0]] = row [1]
-	print(diccionario['Florida'])
-	print(diccionario['Miami'])
-	print(diccionario['Buenos Aires'])
-	print(diccionario['Mar del Plata'])
-	print(diccionario['Córdoba'])
-	print(diccionario['Río Cuarto'])
-	print(diccionario['Houston'])
+		for loc in location:
+			l2 = loc.split(/\s+/)
+			for l21 in l2:
+				
 
+			#col.update({'user.location': /row[0]/},{'user.location': /row[1]/},{'user.location': /row[2]/},{'user.location': /row[3]/},{'$set': {'country': row[3]},'$currentDate': {'lastModified': True}})
+		#print (row[0])
 
 
 
