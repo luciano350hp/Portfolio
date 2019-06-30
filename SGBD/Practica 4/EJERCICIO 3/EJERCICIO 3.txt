@@ -1,10 +1,9 @@
 
-
-EJERCICIO 3
-
+--			EJERCICIO 3
 
 
-1. Listar los 10 usuarios que publicaron más tweets (ordenarlos de manera descendente por cantidad de tweets).
+
+--		1. Listar los 10 usuarios que publicaron más tweets (ordenarlos de manera descendente por cantidad de tweets).
 
 
 db.tweets.aggregate([ {$group: { _id: "$user.name", total: { $sum: 1 } } },    { $sort : { total : -1} },{$limit : 10} ])
@@ -12,8 +11,7 @@ db.tweets.aggregate([ {$group: { _id: "$user.name", total: { $sum: 1 } } },    {
 
 
 
-2. Listar por lenguaje la cantidad de followers del usuario con mayor cantidad de followers que publica en ese lenguaje
-
+--		2. Listar por lenguaje la cantidad de followers del usuario con mayor cantidad de followers que publica en ese lenguaje
 
 db.tweets.aggregate([ 
 	{$group: 
@@ -23,7 +21,6 @@ db.tweets.aggregate([
 		}
 	}	
 	])
-
 
 
 { "_id" : "in", "followers" : 1107 }

@@ -24,6 +24,6 @@ def estimarNivelSocioeconomico(df):
 		diccionario[mediaPorBarrio['place_name'].values[x]] = x+1
 	return diccionario
 	
-#print (estimarNivelSocioeconomico(filtro_CABA1))
+print (estimarNivelSocioeconomico(filtro_CABA1))
 	
 	

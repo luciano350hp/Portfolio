@@ -1,9 +1,9 @@
 
 
-EJERCICIO 2
+--			EJERCICIO 2
 
 
-1. En base al campo \source", determinar la cantidad de usuarios que hay por cada canal.
+--		1. En base al campo "source", determinar la cantidad de usuarios que hay por cada canal.
 
 var mapFunction1 = function() {
 							emit(this.source, 1)
@@ -24,7 +24,7 @@ db.usuarios_por_canal.find();
 
 
 
-2. Determinar la cantidad de tweets por cada lenguaje
+--		2. Determinar la cantidad de tweets por cada lenguaje
 
 var mapFunction2 = function() {
 							emit(this.lang, 1)
@@ -64,18 +64,20 @@ db.tweets.mapReduce(
 
 
 
-3. Clasificar los textos de los tweets en corto (< 10 palabras), mediano (>= 10, < 20 palabras) y largo (>= 20 palabras).
-Devolver la cantidad de tweets en cada una de las clases.
+--		3. Clasificar los textos de los tweets en corto (< 10 palabras), mediano (>= 10, < 20 palabras) y largo (>= 20 palabras).
+--		Devolver la cantidad de tweets en cada una de las clases.
 
 
 
 var mapFunction3 = function() {			
-						cantPalabras = this.text.split(/\s+/);
-						if (cantPalabras.length<10){
+						palabras = this.text.split(/\s+/);
+						cantPalabras = palabras.length;
+						
+						if (cantPalabras<10){
 							emit('Corto', 1);}
-						else if (cantPalabras.length>=10 && cantPalabras.length<20){
+						else if (cantPalabras>=10 && cantPalabras<20){
 							emit('Mediano', 1);}
-						else if (cantPalabras.length>=20){
+						else if (cantPalabras>=20){
 							emit('Largo', 1);}
 }
 

@@ -1,0 +1,7 @@
+
+
+--		EJERCICIO 4-1 COMPROBACION EN MONGO
+
+--	Traigo los registros q tienen algo en el campo country
+
+db.tweets.find( { country : { $exists: true } },{'user.location':1, country:1, _id:0} )
