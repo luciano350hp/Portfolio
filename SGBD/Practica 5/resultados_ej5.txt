@@ -1,0 +1,9 @@
+DATOS DEL MODELO REGRESIÓN LINEAL MULTIPLE
+
+Valor de las pendientes o coeficientes "a": BETA 1, 2 Y 3
+[  4404.70689033    183.10263605  73178.49760374]
+Valor de la intersección o coeficiente "b" BETA 0:
+-66483.2825989
+Precisión del modelo: r-squared
+0.189291604153
+

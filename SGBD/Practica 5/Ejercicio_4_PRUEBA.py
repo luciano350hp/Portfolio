@@ -138,9 +138,67 @@ def estimate_beta(x, y):
                                beta_initial,
                                0.001)
 
+def estimate_sample_beta(sample):
+	x_sample, y_sample = list(zip(*sample)) # magic unzipping trick
+	return estimate_beta(x_sample, y_sample)
+
+def bootstrap_sample(data):
+    """randomly samples len(data) elements with replacement"""
+    return [random.choice(data) for _ in data]
+
+def bootstrap_statistic(data, stats_fn, num_samples):
+    """evaluates stats_fn on num_samples bootstrap samples from data"""
+    return [stats_fn(bootstrap_sample(data))
+            for _ in range(num_samples)]
+def median(v):
+    """finds the 'middle-most' value of v"""
+    n = len(v)
+    sorted_v = sorted(v)
+    midpoint = n // 2
+
+    if n % 2 == 1:
+        # if odd, return the middle value
+        return sorted_v[midpoint]
+    else:
+        # if even, return the average of the middle values
+        lo = midpoint - 1
+        hi = midpoint
+        return (sorted_v[lo] + sorted_v[hi]) / 2
+
 random.seed(0)
 beta = estimate_beta(x, y) 
 print("beta", beta)
 print("r-squared", multiple_r_squared(x, y, beta))
 print()
+
+#EJERCICIO 6 BOOTSTRAP
+
+# print("digression: the bootstrap")
+# # 101 points all very close to 100
+# close_to_100 = [99.5 + random.random() for _ in range(101)]
+
+# # 101 points, 50 of them near 0, 50 of them near 200
+# far_from_100 = ([99.5 + random.random()] +
+				# [random.random() for _ in range(50)] +
+				# [200 + random.random() for _ in range(50)])
+
+# print("bootstrap_statistic(close_to_100, median, 100):")
+# print(bootstrap_statistic(close_to_100, median, 100))
+# print("bootstrap_statistic(far_from_100, median, 100):")
+# print(bootstrap_statistic(far_from_100, median, 100))
+# print()
+
+# random.seed(0) # so that you get the same results as me
+
+# bootstrap_betas = bootstrap_statistic(list(zip(x, y)),
+									  # estimate_sample_beta,
+									  # 100)
+
+# bootstrap_standard_errors = [
+	# standard_deviation([beta[i] for beta in bootstrap_betas])
+	# for i in range(4)]
+
+# print("bootstrap standard errors", bootstrap_standard_errors)
+# print()
+
 
