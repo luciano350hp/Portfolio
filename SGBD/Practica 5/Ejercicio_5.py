@@ -17,10 +17,10 @@ data = pd.read_csv('dataset.csv')
 X_multiple = data[['NS','surface_total_in_m2','rooms']]
 
 #Defino la variable dependiente
-y_multiple = data ['price'] 
+y_multiple = data ['price']
 
 #Separo los datos de "train" en entrenamiento y prueba para probar los algoritmos
-X_train, X_test, y_train, y_test = train_test_split(X_multiple, y_multiple, test_size=0.2)
+X_train, X_test, y_train, y_test = train_test_split(X_multiple, y_multiple, test_size=0)
 
 #Defino el algoritmo a utilizar
 lr_multiple = linear_model.LinearRegression()
@@ -29,7 +29,7 @@ lr_multiple = linear_model.LinearRegression()
 lr_multiple.fit(X_train, y_train)
 
 #Realizo una predicción
-Y_pred_multiple = lr_multiple.predict(X_test)
+#Y_pred_multiple = lr_multiple.predict(X_test)
 
 print('DATOS DEL MODELO REGRESIÓN LINEAL MULTIPLE')
 print()

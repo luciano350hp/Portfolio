@@ -9,14 +9,15 @@ import random
 #LEO EL CSV
 data = pd.read_csv('dataset.csv')
 
-NS = data['NS']
-MC = data['surface_total_in_m2']
+#SEPARO LAS VARIABLES
+NS = data['NS'] 
+MC = data['surface_total_in_m2'] 
 CA = data['rooms']
 VP = data['price']
 
-
 l = len(NS)
 
+#CREO LOS VECTORES
 x = []
 y = []
 
@@ -24,6 +25,9 @@ for i in range (0, l):
 	x1 = [1, int(NS[i]),int(MC[i]),int(CA[i])]
 	x.append(x1)
 	y.append(int(VP[i]))
+	
+#-------------------------------------------------------------------------------------------------------------#
+#-----------------------FUNCIONES LIBRO-----------------------------------------------------------------------------#
 
 def dot(v, w):
 	return sum(v_i * w_i for v_i, w_i in zip(v, w))
@@ -54,7 +58,6 @@ def total_sum_of_squares(y):
 def multiple_r_squared(x, y, beta):
 	sum_of_squared_errors = sum(error(x_i, y_i, beta) ** 2 for x_i, y_i in zip(x, y))
 	return 1.0 - sum_of_squared_errors / total_sum_of_squares(y)
-
 
 def vector_subtract(v, w):
 	return [v_i - w_i for v_i, w_i in zip(v,w)]
@@ -90,8 +93,6 @@ def minimize_stochastic(target_fn, gradient_fn, x, y, theta_0, alpha_0=0.01):
             theta = vector_subtract(theta, scalar_multiply(alpha, gradient_i))
 
     return min_theta
-
-
 
 def in_random_order(data):
 	indexes = [i for i, _ in enumerate(data)] # create a list of indexes
@@ -137,19 +138,7 @@ def estimate_beta(x, y):
                                x, y,
                                beta_initial,
                                0.001)
-
-def estimate_sample_beta(sample):
-	x_sample, y_sample = list(zip(*sample)) # magic unzipping trick
-	return estimate_beta(x_sample, y_sample)
-
-def bootstrap_sample(data):
-    """randomly samples len(data) elements with replacement"""
-    return [random.choice(data) for _ in data]
-
-def bootstrap_statistic(data, stats_fn, num_samples):
-    """evaluates stats_fn on num_samples bootstrap samples from data"""
-    return [stats_fn(bootstrap_sample(data))
-            for _ in range(num_samples)]
+                               
 def median(v):
     """finds the 'middle-most' value of v"""
     n = len(v)
@@ -164,41 +153,45 @@ def median(v):
         lo = midpoint - 1
         hi = midpoint
         return (sorted_v[lo] + sorted_v[hi]) / 2
+        
+#-------------------------------------------------------------------------------------------------------------#
+#----------------------------------LLAMADO FUNCIONES EJECUCIÒN------------------------------------------------#
 
-random.seed(0)
+#random.seed(0)
 beta = estimate_beta(x, y) 
 print("beta", beta)
 print("r-squared", multiple_r_squared(x, y, beta))
 print()
 
-#EJERCICIO 6 BOOTSTRAP
+#-------------------------------------------------------------------------------------------------------------#
+#----------------------------------FUNCIONES BOOTSTRAP--------------------------------------------------------#
 
-# print("digression: the bootstrap")
-# # 101 points all very close to 100
-# close_to_100 = [99.5 + random.random() for _ in range(101)]
+def estimate_sample_beta(sample):
+	x_sample, y_sample = list(zip(*sample)) # magic unzipping trick
+	return estimate_beta(x_sample, y_sample)
 
-# # 101 points, 50 of them near 0, 50 of them near 200
-# far_from_100 = ([99.5 + random.random()] +
-				# [random.random() for _ in range(50)] +
-				# [200 + random.random() for _ in range(50)])
+def bootstrap_sample(data):
+    """randomly samples len(data) elements with replacement"""
+    return [random.choice(data) for _ in data]
 
-# print("bootstrap_statistic(close_to_100, median, 100):")
-# print(bootstrap_statistic(close_to_100, median, 100))
-# print("bootstrap_statistic(far_from_100, median, 100):")
-# print(bootstrap_statistic(far_from_100, median, 100))
-# print()
+def bootstrap_statistic(data, stats_fn, num_samples):
+    """evaluates stats_fn on num_samples bootstrap samples from data"""
+    return [stats_fn(bootstrap_sample(data))
+            for _ in range(num_samples)]
+            
+#-------------------------------------------------------------------------------------------------------------#
+#-----------------------------------LLAMADO FUNCIONES EJECUCIÒN-----------------------------------------------#
+#-----------------------------------EJERCICIO 6 BOOTSTRAP-----------------------------------------------------#
 
-# random.seed(0) # so that you get the same results as me
+print("digression: the bootstrap")
 
-# bootstrap_betas = bootstrap_statistic(list(zip(x, y)),
-									  # estimate_sample_beta,
-									  # 100)
+bootstrap_betas = bootstrap_statistic(list(zip(x, y)),
+									  estimate_sample_beta,
+									  100)
 
-# bootstrap_standard_errors = [
-	# standard_deviation([beta[i] for beta in bootstrap_betas])
-	# for i in range(4)]
+bootstrap_standard_errors = [
+	standard_deviation([beta[i] for beta in bootstrap_betas])
+	for i in range(4)]
 
-# print("bootstrap standard errors", bootstrap_standard_errors)
-# print()
-
-
+print("bootstrap standard errors", bootstrap_standard_errors)
+print()
