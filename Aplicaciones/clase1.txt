@@ -1,0 +1,79 @@
+Aplicaciones en tiempo real.
+Respuesta instantanea.
+Sistemas duros y blandos. No es critico, no es industrial. NO afecta la perdida de paquetes.
+S.O en tiempo real.
+basados en interrupciones. determinisco = cuanto tarda.
+app java real time.
+
+
+Tema 1 Caracteristas de 3 SO en tiempo real.
+primer pelicula.
+javascript. node .js
+local rendering, remote rendering.
+blockchain. base de datos distribuida.
+
+
+
+Free RTOS: Software Libre. garantizar priorizar a interrupciones.
+
+
+video/radio/chat en vivo. Google docs.
+
+
+Hilo ejecución x petición.
+node.js mas rapido.
+
+js multiparadigma.
+
+var y let.
+variable global desorganizacion.
+const asignado a funcion inmodificable.
+No tipado
+
+
+ 1 == '1' True
+ 1 === '1' False
+
+callback: PROGRMACIÓN  asincronica. Cuando lo termines de procesar llamame a esta funcion.
+
+Promesas: Programación asincronica.
+
+generators
+yield pagina 23
+es como return interno. programación concurrente. servidor.
+
+descargar visual studio y node.js.
+Navegador entorno de ejecución..
+
+Concepto de objetos.   
+herencia en js. superclase es --proto. super ()
+
+Tambien permite definir Clases de la misma forma que en otro lenguaje de objetos. pag 27.
+import y export pagina 29
+
+
+28/9
+
+Prototipos. PAGINA 99
+composicion,herencia. [] ARRAY {} OBJETO
+
+CLASES
+spread y array. spread
+
+pagina 34 asignación desestructurada.
+
+
+STATIC METODOS PEGADOS A LA CLASE y no a la instancia.
+Excepciones.
+
+' ${}'
+
+const s = (a,b) => a + b
+
+spread pagina 133
+
+retrun devuelve estructura y se puede separar.
+
+para usar this se debe declarar con function
+
+node.js visual studio 
