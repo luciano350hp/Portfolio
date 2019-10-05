@@ -27,9 +27,11 @@ class Calculadora {
 	*factorial (numero) {
 		let fact = 1
 		if (numero < 0){
+			console.log("Los numeros negativos no tienen factorial");
 			fact = 0
 		}
-		if (numero === 1){
+		if (numero === 0){
+			console.log("Factorial de 0 es 1");
 			fact = 1
 		}
 		for (let i=1; i <= numero; i++){
@@ -48,7 +50,7 @@ console.log("La resta es: ",c.resta());
 console.log("El resultado de la división es: ",resultado, "Con resto: ",resto, '\n')
 
 console.log("Factorial")
-let fact = c.factorial(5)
+let fact = c.factorial(17)
 let estado = fact.next()
 let iterador = 1
 while (!estado.done){
