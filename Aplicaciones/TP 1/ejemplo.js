@@ -1,9 +1,3 @@
-function dosomething() {
-	console.log('Hola Mundo')
-}
-
-dosomething()
-
 class Calculadora {
 	constructor(a,b) {
 		this.a = a
@@ -29,30 +23,39 @@ class Calculadora {
 		let suma = 0;
 		return this.a + this.b;
 	}
-	*ejemplo(input) {
-		var doubleThat = 2 * (yield (input / 2))
-		var another = yield (doubleThat)
-		return (input * doubleThat * another)
-	}
-	*factorial (number, acc = 1) {
-		yield acc
-		if (number > 1) 
-		yield *factorial(number - 1, acc * number);
+
+	*factorial (numero) {
+		let fact = 1
+		if (numero < 0){
+			fact = 0
 		}
+		if (numero === 1){
+			fact = 1
+		}
+		for (let i=1; i <= numero; i++){
+			fact =  fact * i
+			yield (fact)
+		}
+	}
 
 }
-
-
 
 c = new Calculadora (20,15)
 const [resultado, resto] = c.division()
 console.log("La multiplicación es: ",c.multiplicacion());
 console.log("La suma es: ",c.suma());
 console.log("La resta es: ",c.resta());
-console.log("El resultado de la división es: ",resultado, "Con resto: ",resto)
+console.log("El resultado de la división es: ",resultado, "Con resto: ",resto, '\n')
 
-
-
+console.log("Factorial")
+let fact = c.factorial(5)
+let estado = fact.next()
+let iterador = 1
+while (!estado.done){
+	console.log("Factorial de",iterador,"----->",estado.value)
+	iterador ++;
+	estado = fact.next()
+}
 
 
 

@@ -77,3 +77,10 @@ retrun devuelve estructura y se puede separar.
 para usar this se debe declarar con function
 
 node.js visual studio 
+
+Pagina 150 closures.
+template string.
+
+arrays pagina  153
+for each pagina 158
+iterator pagina 159
