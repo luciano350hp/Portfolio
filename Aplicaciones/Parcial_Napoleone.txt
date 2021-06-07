@@ -1,0 +1,80 @@
+class Moneda {
+	constructor(identificador) {
+		this.identificador = identificador
+	}
+}
+
+class Usuario {
+	constructor(direccion, billetera) {
+		this.direccion = direccion
+		this.billetera = billetera
+	}
+}
+
+class Bloque {
+    constructor(direccionO,direccionD, listaMonedas) {
+        this.direccionO = direccionO
+        this.direccionD = direccionD
+        this.listaMonedas = listaMonedas
+	}
+}
+
+moneda1 = new Moneda ("AAA000b")
+moneda2 = new Moneda ("ZZZ061y")
+moneda3 = new Moneda ("TPQ257l")
+moneda4 = new Moneda ("HLM121n")
+moneda5 = new Moneda ("QWR292x")
+moneda6 = new Moneda ("OPQ124l")
+
+const billeteraFulano = [moneda1, moneda2, moneda3]
+const billeteraMengano = [moneda4, moneda5, moneda6]
+
+Fulano = new Usuario ("ABCD1234YU", billeteraFulano)
+Mengano = new Usuario ("JLMM4567YT", billeteraMengano)
+
+
+bloquePrueba1 = new Bloque ("ABCD1234YU", "JLMM4567YT", moneda2)
+
+const transacciones = []
+transacciones.push(bloquePrueba1)
+
+function VericarMonedaTransferida(Moneda){
+    let verificador = false
+    for (let i = 0; i < transacciones.length; i += 1) {
+        if (transacciones[i].listaMonedas.identificador == Moneda.identificador){
+            verificador = true
+        }
+    }
+    return verificador
+}
+
+function Verificador_Direcciones(P1, P2){
+    condicion = false
+    if (P1.direccion.length == 10 & P2.direccion.length == 10){
+        condicion = true
+    }
+    return condicion
+}
+
+function *guardarTransaccion(Persona1, Persona2, moneda){
+    yield VericarMonedaTransferida(moneda)
+    console.log("La moneda no ha sido transferida")
+    if (Verificador_Direcciones(Persona1,Persona2)){
+        bloque2 = new Bloque (Persona1.direccion, Persona2.direccion, moneda)
+        Persona2.billetera.push(moneda)
+        indice = Persona1.billetera.indexOf(moneda)
+        Persona1.billetera.splice(indice,indice + 1)
+        console.log("La moneda ha sido transferida exitosamente")
+        transacciones.push(bloque2)
+        console.log("La operación ha sido agregada exitosamente \n", "Tranferencias: \n")
+        transacciones.forEach(v => {console.log(v)})
+        console.log("\n Usuario Emisor: ", Persona1,'\n')
+        console.log("\n Usuario Receptor: ", Persona2, '\n')
+    }
+}
+
+let transferencia = guardarTransaccion(Fulano, Mengano, moneda1)
+let estado = transferencia.next()
+if (!estado.value){
+    estado = transferencia.next()
+}
